@@ -3,164 +3,181 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ashish Kosana — AI / Software / Data Engineer</title>
-<meta name="description" content="Ashish Kosana — Software, AI/ML, and Data engineer. I build production AI, backend, and data systems that are tested, deployed, and observable. B.S. Computer Science, UMass Lowell. Microsoft DP-300 & DP-700 certified.">
-<meta name="theme-color" content="#0b0b0f">
+<title>Ashish Kosana — Software Engineer (Full-Stack)</title>
+<meta name="description" content="Ashish Kosana — full-stack software engineer. I build products end-to-end: Flutter mobile on AWS serverless backends (Python, Lambda, DynamoDB). Tested, deployed, observable. B.S. Computer Science, UMass Lowell.">
+<meta name="theme-color" content="#4F46E5">
 <link rel="canonical" href="https://www.ashishkosana.com/">
-<!-- Open Graph / social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Ashish Kosana — AI / Software / Data Engineer">
-<meta property="og:description" content="I build production AI, backend, and data systems — tested, deployed, and observable.">
+<meta property="og:title" content="Ashish Kosana — Software Engineer (Full-Stack)">
+<meta property="og:description" content="Full-stack software engineer — Flutter + AWS serverless. Products shipped end-to-end, tested and observable.">
 <meta property="og:url" content="https://www.ashishkosana.com/">
 <meta property="og:image" content="https://www.ashishkosana.com/ashish.jpeg">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌘</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b0b0f;--surface:#121217;--surface2:#17171e;--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.05);
-  --text:#ededf0;--muted:#a1a1aa;--faint:#71717a;
-  --accent:#7c9bff;--accent-soft:rgba(124,155,255,.12);--accent-line:rgba(124,155,255,.3);
-  --green:#34d399;--mono:'JetBrains Mono',ui-monospace,monospace;--sans:'Inter',system-ui,sans-serif;--max:1120px;
+  /* Brand indigo (Crewtron pattern, different hue). Token names kept as --green* for simplicity. */
+  --green:#4F46E5; --green-400:#6366F1; --green-700:#4338CA; --green-800:#3730A3;
+  --grad:linear-gradient(135deg,#6366F1,#4F46E5);
+  --brand-50:#eef2ff; --brand-100:#e0e7ff;
+  /* Cool green-tinted neutrals */
+  --n0:#ffffff; --n25:#fbfcfc; --n50:#f6f8f8; --n100:#eef2f1; --n150:#e6ebea;
+  --n200:#dde4e2; --n300:#c4cecb; --n400:#8a9692; --n500:#586763; --n600:#4e5a56;
+  --n700:#38423f; --n800:#232b29; --ink:#101513;
+  --bg:var(--n0); --wash:var(--n25); --surface:var(--n0); --border:var(--n200);
+  --border-soft:var(--n100); --text:var(--ink); --text-soft:var(--n600); --text-mute:var(--n500);
+  --display:"Space Grotesk","Plus Jakarta Sans",system-ui,sans-serif;
+  --body:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+  --mono:"Space Grotesk",ui-monospace,"SF Mono",Menlo,monospace;
+  --max:1140px;
+  --e1:0 1px 2px rgba(16,40,33,.05),0 1px 1px rgba(16,40,33,.05);
+  --e2:0 2px 4px rgba(16,40,33,.04),0 6px 16px rgba(16,40,33,.06);
+  --e3:0 1px 3px rgba(16,40,33,.05),0 10px 24px rgba(16,40,33,.07),0 30px 60px -24px rgba(11,87,56,.16);
+  --e-brand:0 1px 2px rgba(67,56,202,.28),0 8px 20px -6px rgba(79,70,229,.4);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;font-size:16px;letter-spacing:-0.011em;overflow-x:hidden;
-  background-image:radial-gradient(60rem 40rem at 80% -10%,rgba(124,155,255,.07),transparent 60%);background-attachment:fixed}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;font-size:16px;letter-spacing:-.01em;overflow-x:hidden;
+  background-image:radial-gradient(52rem 34rem at 88% -12%,rgba(79,70,229,.08),transparent 62%);background-attachment:fixed}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--accent-soft);color:#fff}
-::-webkit-scrollbar{width:9px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#2a2a33;border-radius:9px;border:2px solid var(--bg)}
+::selection{background:var(--brand-100);color:var(--green-800)}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--n50)}::-webkit-scrollbar-thumb{background:var(--n300);border-radius:9px;border:2px solid var(--n50)}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
 .mono{font-family:var(--mono)}
 
 /* nav */
-nav{position:fixed;inset:0 0 auto 0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;
-  padding:0 28px;background:rgba(11,11,15,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)}
-.logo{font-weight:700;font-size:.98rem;letter-spacing:-.02em}
-.logo b{color:var(--accent)}
+nav{position:fixed;inset:0 0 auto 0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;background:rgba(255,255,255,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-soft)}
+.logo{font-family:var(--display);font-weight:700;font-size:1.02rem;letter-spacing:-.02em}
+.logo b{color:var(--green-700)}
 .nav-links{display:flex;gap:30px;list-style:none}
-.nav-links a{font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.02em;transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a{font-size:.86rem;font-weight:500;color:var(--text-soft);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--green-700)}
 .nav-right{display:flex;align-items:center;gap:16px}
-.dot{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.68rem;color:var(--green)}
-.dot::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(52,211,153,.5);animation:pulse 2.4s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}70%{box-shadow:0 0 0 7px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
-.btn{font-family:var(--mono);font-size:.74rem;padding:8px 16px;border-radius:7px;border:1px solid var(--line);color:var(--text);transition:.2s;white-space:nowrap}
-.btn:hover{border-color:var(--accent-line);background:var(--accent-soft)}
-.btn-solid{background:var(--accent);color:#0b0b0f;border-color:var(--accent);font-weight:600}
-.btn-solid:hover{background:#9bb2ff;color:#0b0b0f}
+.dot{display:inline-flex;align-items:center;gap:7px;font-size:.76rem;font-weight:600;color:var(--green-700)}
+.dot::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(79,70,229,.5);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(79,70,229,.5)}70%{box-shadow:0 0 0 8px rgba(79,70,229,0)}100%{box-shadow:0 0 0 0 rgba(79,70,229,0)}}
+.btn{font-size:.82rem;font-weight:600;padding:9px 17px;border-radius:10px;border:1px solid var(--border);color:var(--text);background:var(--n0);transition:.2s;white-space:nowrap}
+.btn:hover{border-color:var(--green-400);color:var(--green-700);box-shadow:var(--e1)}
+.btn-solid{background:var(--grad);color:#fff;border:none;box-shadow:var(--e-brand)}
+.btn-solid:hover{color:#fff;transform:translateY(-1px);filter:saturate(1.06)}
 .menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
 
 /* hero */
-#hero{padding:140px 0 90px}
+#hero{padding:150px 0 90px}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-.avail{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.7rem;color:var(--green);
-  border:1px solid rgba(52,211,153,.25);background:rgba(52,211,153,.06);padding:5px 12px;border-radius:99px;margin-bottom:26px}
-.avail::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green)}
-h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800;line-height:1.02;letter-spacing:-.04em;margin-bottom:18px}
-h1 .grey{color:var(--faint)}
-.roles{font-family:var(--mono);font-size:.86rem;color:var(--muted);margin-bottom:24px;letter-spacing:.01em}
-.roles b{color:var(--accent);font-weight:500}
-.pitch{color:var(--muted);font-size:1.05rem;max-width:30em;margin-bottom:34px}
+.avail{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;font-weight:600;color:var(--green-800);
+  border:1px solid var(--brand-100);background:var(--brand-50);padding:6px 14px;border-radius:99px;margin-bottom:26px}
+.avail::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green)}
+h1{font-family:var(--display);font-size:clamp(2.6rem,6vw,4.3rem);font-weight:700;line-height:1.03;letter-spacing:-.035em;margin-bottom:18px}
+h1 .grn{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.roles{font-size:.95rem;font-weight:600;color:var(--text-soft);margin-bottom:22px}
+.roles b{color:var(--green-700);font-weight:600}
+.pitch{color:var(--text-soft);font-size:1.08rem;max-width:31em;margin-bottom:34px}
 .pitch b{color:var(--text);font-weight:600}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
-.cta .btn{padding:11px 20px;font-size:.78rem}
+.cta .btn{padding:12px 22px;font-size:.85rem}
 
 /* bento */
 .bento{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cell{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 18px;transition:.2s}
-.cell:hover{border-color:var(--accent-line);transform:translateY(-2px)}
-.cell .k{font-family:var(--mono);font-size:.62rem;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}
-.cell .big{font-size:1.9rem;font-weight:800;letter-spacing:-.03em;line-height:1}
-.cell .big .u{font-size:.9rem;color:var(--accent);font-family:var(--mono);font-weight:500}
-.cell .sub{font-size:.8rem;color:var(--muted);margin-top:6px;line-height:1.45}
+.cell{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;transition:.2s;box-shadow:var(--e1)}
+.cell:hover{border-color:var(--green-400);transform:translateY(-2px);box-shadow:var(--e2)}
+.cell .k{font-size:.64rem;font-weight:700;color:var(--green-700);letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}
+.cell .big{font-family:var(--display);font-size:1.9rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.cell .big .u{font-size:.9rem;color:var(--green-700);font-weight:500}
+.cell .sub{font-size:.82rem;color:var(--text-mute);margin-top:6px;line-height:1.45}
 .cell.span{grid-column:1/-1}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-.chip{font-family:var(--mono);font-size:.66rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
-.cell.accent{background:linear-gradient(135deg,rgba(124,155,255,.12),rgba(124,155,255,.03));border-color:var(--accent-line)}
+.chip{font-size:.72rem;font-weight:500;color:var(--text-soft);border:1px solid var(--border);border-radius:7px;padding:4px 9px;background:var(--n25)}
+.cell.accent{background:linear-gradient(135deg,var(--brand-50),#fff);border-color:var(--brand-100)}
 
 /* sections */
-section{padding:84px 0;border-top:1px solid var(--line2)}
-.tag{font-family:var(--mono);font-size:.7rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.tag::before{content:'';width:22px;height:1px;background:var(--accent)}
-.h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:700;letter-spacing:-.03em;margin-bottom:14px}
-.lead{color:var(--muted);max-width:42em;margin-bottom:40px}
+section{padding:88px 0;border-top:1px solid var(--border-soft)}
+section:nth-of-type(even){background:var(--wash)}
+.tag{font-size:.74rem;font-weight:700;color:var(--green-700);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.tag::before{content:'';width:22px;height:2px;background:var(--grad);border-radius:2px}
+.h2{font-family:var(--display);font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:700;letter-spacing:-.03em;margin-bottom:14px}
+.lead{color:var(--text-soft);max-width:44em;margin-bottom:40px}
 
 /* projects */
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;transition:.22s;position:relative;overflow:hidden}
-.card::after{content:'';position:absolute;inset:auto 0 0 0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.card:hover{border-color:var(--accent-line);transform:translateY(-3px);background:var(--surface2)}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;transition:.22s;position:relative;overflow:hidden;box-shadow:var(--e1)}
+.card::after{content:'';position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.card:hover{border-color:var(--green-400);transform:translateY(-4px);box-shadow:var(--e3)}
 .card:hover::after{transform:scaleX(1)}
-.cat{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:5px;align-self:flex-start;margin-bottom:14px}
-.cat.ai{color:#c4b5fd;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.25)}
-.cat.be{color:#7c9bff;background:var(--accent-soft);border:1px solid var(--accent-line)}
-.cat.da{color:#34d399;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.25)}
-.card h3{font-size:1.12rem;font-weight:650;letter-spacing:-.02em;margin-bottom:7px}
-.card .pd{font-size:.86rem;color:var(--muted);line-height:1.55;margin-bottom:14px;flex:1}
-.signal{font-family:var(--mono);font-size:.66rem;color:var(--accent);margin-bottom:12px}
-.stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
-.stack span{font-family:var(--mono);font-size:.62rem;color:var(--faint);border:1px solid var(--line);border-radius:5px;padding:2px 7px}
-.repo{font-family:var(--mono);font-size:.72rem;color:var(--muted);display:inline-flex;align-items:center;gap:6px;transition:gap .2s,color .2s}
-.card:hover .repo{color:var(--accent);gap:10px}
-.earlier{margin-top:34px}
-.earlier-head{font-family:var(--mono);font-size:.7rem;color:var(--faint);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
-.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.mini{display:flex;justify-content:space-between;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px 16px;transition:.2s}
-.mini:hover{border-color:var(--accent-line);background:var(--surface2)}
-.mini b{font-weight:550;font-size:.9rem}
-.mini .m{font-family:var(--mono);font-size:.66rem;color:var(--accent);white-space:nowrap}
+.cat{font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:6px;align-self:flex-start;margin-bottom:14px}
+.cat.be{color:var(--green-800);background:var(--brand-50);border:1px solid var(--brand-100)}
+.cat.tool{color:#2c54a8;background:#eef3fe;border:1px solid #d5e2fb}
+.cat.da{color:#8a5a12;background:#fdf6ec;border:1px solid #f6e5c9}
+.cat.ai{color:#6b4fc0;background:#f3f0fd;border:1px solid #e4dcfa}
+.card h3{font-family:var(--display);font-size:1.14rem;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
+.card .pd{font-size:.9rem;color:var(--text-soft);line-height:1.55;margin-bottom:14px;flex:1}
+.card .pd code{font-family:var(--mono);font-size:.85em;background:var(--n100);padding:1px 5px;border-radius:5px}
+.signal{font-size:.72rem;font-weight:600;color:var(--green-700);margin-bottom:12px}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.stack span{font-size:.7rem;font-weight:500;color:var(--text-mute);border:1px solid var(--border);border-radius:6px;padding:3px 8px;background:var(--n25)}
+.repo{font-size:.8rem;font-weight:600;color:var(--text-soft);display:inline-flex;align-items:center;gap:6px;transition:gap .2s,color .2s}
+.card:hover .repo{color:var(--green-700);gap:10px}
+.earlier{margin-top:36px}
+.earlier-head{font-size:.74rem;font-weight:700;color:var(--text-mute);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.mini{display:flex;justify-content:space-between;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:.2s;box-shadow:var(--e1)}
+.mini:hover{border-color:var(--green-400);transform:translateY(-2px);box-shadow:var(--e2)}
+.mini b{font-weight:600;font-size:.92rem}
+.mini .m{font-size:.72rem;font-weight:600;color:var(--green-700);white-space:nowrap}
 
 /* about */
-.about-grid{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:start}
-.photo{width:200px;height:200px;border-radius:16px;object-fit:cover;border:1px solid var(--line);filter:grayscale(.15)}
-.about-grid p{color:var(--muted);margin-bottom:14px}
+.about-grid{display:grid;grid-template-columns:210px 1fr;gap:46px;align-items:start}
+.photo{width:210px;height:210px;border-radius:20px;object-fit:cover;border:1px solid var(--border);box-shadow:var(--e2)}
+.about-grid p{color:var(--text-soft);margin-bottom:14px}
 .about-grid p b{color:var(--text);font-weight:600}
 
 /* skills */
-.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px}
-.sk-cat .skl{font-family:var(--mono);font-size:.66rem;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:11px;padding-bottom:8px;border-bottom:1px solid var(--line2)}
-.sk-list{display:flex;flex-wrap:wrap;gap:7px}
-.sk{font-family:var(--mono);font-size:.74rem;color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:5px 11px;transition:.2s;cursor:default}
-.sk:hover{border-color:var(--accent-line);color:var(--text)}
-.sk.core{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 44px}
+.sk-cat .skl{font-size:.7rem;font-weight:700;color:var(--text-mute);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-soft)}
+.sk-list{display:flex;flex-wrap:wrap;gap:8px}
+.sk{font-size:.82rem;font-weight:500;color:var(--text-soft);border:1px solid var(--border);border-radius:8px;padding:6px 12px;background:var(--n0);transition:.2s;cursor:default}
+.sk:hover{border-color:var(--green-400);color:var(--green-700)}
+.sk.core{color:var(--green-800);border-color:var(--brand-100);background:var(--brand-50)}
 
 /* experience */
-.exp{display:grid;grid-template-columns:200px 1fr;gap:40px;padding:30px 0;border-top:1px solid var(--line2)}
+.exp{display:grid;grid-template-columns:210px 1fr;gap:42px;padding:32px 0;border-top:1px solid var(--border-soft)}
 .exp:first-of-type{border-top:none}
-.exp .when{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
-.exp .co{font-family:var(--mono);font-size:.74rem;color:var(--accent);margin-top:4px}
-.exp .role{font-size:1.2rem;font-weight:650;letter-spacing:-.02em;margin-bottom:3px}
-.exp .loc{font-family:var(--mono);font-size:.7rem;color:var(--faint);margin-bottom:14px}
-.exp ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.exp li{color:var(--muted);font-size:.92rem;padding-left:18px;position:relative}
-.exp li::before{content:'▹';position:absolute;left:0;color:var(--accent)}
+.exp .when{font-size:.8rem;font-weight:600;color:var(--text-mute)}
+.exp .co{font-family:var(--display);font-size:.9rem;font-weight:600;color:var(--green-700);margin-top:4px}
+.exp .role{font-family:var(--display);font-size:1.24rem;font-weight:600;letter-spacing:-.02em;margin-bottom:3px}
+.exp .loc{font-size:.8rem;color:var(--text-mute);margin-bottom:14px}
+.exp ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.exp li{color:var(--text-soft);font-size:.94rem;padding-left:20px;position:relative}
+.exp li::before{content:'▹';position:absolute;left:0;color:var(--green)}
 .exp li b{color:var(--text);font-weight:600}
 
 /* education */
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.edu{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
-.edu .deg{font-size:1.15rem;font-weight:650;letter-spacing:-.02em;margin-bottom:5px}
-.edu .sch{font-family:var(--mono);font-size:.74rem;color:var(--accent);margin-bottom:3px}
-.edu .per{font-family:var(--mono);font-size:.68rem;color:var(--faint);margin-bottom:14px}
-.badges{display:flex;flex-wrap:wrap;gap:7px}
-.badge{font-family:var(--mono);font-size:.66rem;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:4px 9px}
-.badge.gold{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.edu{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:26px;box-shadow:var(--e1)}
+.edu .deg{font-family:var(--display);font-size:1.16rem;font-weight:600;letter-spacing:-.02em;margin-bottom:5px}
+.edu .sch{font-size:.86rem;font-weight:600;color:var(--green-700);margin-bottom:3px}
+.edu .per{font-size:.78rem;color:var(--text-mute);margin-bottom:14px}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge{font-size:.72rem;font-weight:500;color:var(--text-soft);border:1px solid var(--border);border-radius:7px;padding:5px 10px;background:var(--n25)}
+.badge.gold{color:var(--green-800);border-color:var(--brand-100);background:var(--brand-50)}
 
 /* contact */
 #contact{text-align:center}
+#contact .tag{justify-content:center}
 #contact .lead{margin:0 auto 36px}
 .channels{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.channels a{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.8rem;padding:13px 22px;border:1px solid var(--line);border-radius:10px;color:var(--text);transition:.2s}
-.channels a:hover{border-color:var(--accent-line);background:var(--accent-soft);transform:translateY(-2px)}
-.channels a.primary{background:var(--accent);color:#0b0b0f;border-color:var(--accent);font-weight:600}
-.channels a.primary:hover{background:#9bb2ff}
+.channels a{display:inline-flex;align-items:center;gap:9px;font-size:.88rem;font-weight:600;padding:14px 24px;border:1px solid var(--border);border-radius:12px;color:var(--text);background:var(--n0);transition:.2s;box-shadow:var(--e1)}
+.channels a:hover{border-color:var(--green-400);color:var(--green-700);transform:translateY(-2px);box-shadow:var(--e2)}
+.channels a.primary{background:var(--grad);color:#fff;border:none;box-shadow:var(--e-brand)}
+.channels a.primary:hover{color:#fff}
 
-footer{border-top:1px solid var(--line2);padding:26px 28px;display:flex;justify-content:space-between;align-items:center;max-width:var(--max);margin:0 auto;flex-wrap:wrap;gap:10px}
-footer .fl{font-weight:650}
-footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
+footer{border-top:1px solid var(--border-soft);padding:28px;display:flex;justify-content:space-between;align-items:center;max-width:var(--max);margin:0 auto;flex-wrap:wrap;gap:10px}
+footer .fl{font-family:var(--display);font-weight:700}
+footer .fc{font-size:.74rem;color:var(--text-mute)}
 
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
@@ -168,11 +185,11 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
 
 @media(max-width:880px){
   .nav-links{display:none}.menu-toggle{display:block}
-  .nav-links.open{display:flex;position:fixed;top:60px;left:0;right:0;flex-direction:column;gap:0;background:rgba(11,11,15,.97);border-bottom:1px solid var(--line);padding:8px 28px 16px}
-  .nav-links.open a{padding:12px 0;border-bottom:1px solid var(--line2)}
+  .nav-links.open{display:flex;position:fixed;top:64px;left:0;right:0;flex-direction:column;gap:0;background:rgba(255,255,255,.98);border-bottom:1px solid var(--border);padding:8px 28px 16px}
+  .nav-links.open a{padding:12px 0;border-bottom:1px solid var(--border-soft)}
   .hero-grid{grid-template-columns:1fr;gap:40px}
   .proj-grid{grid-template-columns:1fr}.mini-grid{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr;gap:24px}.photo{width:130px;height:130px}
+  .about-grid{grid-template-columns:1fr;gap:24px}.photo{width:140px;height:140px}
   .skills-grid{grid-template-columns:1fr}.exp{grid-template-columns:1fr;gap:10px}.edu-grid{grid-template-columns:1fr}
 }
 </style>
@@ -190,7 +207,7 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
   </ul>
   <div class="nav-right">
     <span class="dot">Open to work</span>
-    <a href="resume.pdf" class="btn" target="_blank" rel="noopener">Résumé</a>
+    <a href="resume.pdf" class="btn btn-solid" target="_blank" rel="noopener">Résumé</a>
     <button class="menu-toggle" id="menu" aria-label="Menu">☰</button>
   </div>
 </nav>
@@ -198,10 +215,10 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
 <header id="hero">
   <div class="wrap hero-grid">
     <div class="reveal">
-      <span class="avail">Open to full-time roles · OPT authorized</span>
-      <h1>Ashish Kosana<br><span class="grey">builds production systems.</span></h1>
-      <p class="roles"><b>AI / ML Engineer</b> · <b>Backend Engineer</b> · <b>Data Engineer</b></p>
-      <p class="pitch">I build <b>AI, backend, and data systems</b> end-to-end — RAG pipelines and LLM agents, multi-tenant APIs, and tested data pipelines. Everything I ship is <b>tested, deployed, and observable</b>, not just a demo.</p>
+      <span class="avail">Open to full-time roles · F-1 OPT authorized</span>
+      <h1>Ashish Kosana<br><span class="grn">builds products end-to-end.</span></h1>
+      <p class="roles"><b>Software Engineer</b> · Full-stack — Flutter + AWS serverless</p>
+      <p class="pitch">I build <b>full-stack products</b> from the mobile screen to the serverless backend — <b>Flutter</b> front ends on <b>AWS</b> (Python, Lambda, DynamoDB, API Gateway). Everything I ship is <b>tested, deployed, and observable</b>, not just a demo.</p>
       <div class="cta">
         <a href="#work" class="btn btn-solid">View work ↓</a>
         <a href="https://github.com/Ashish1916" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
@@ -212,12 +229,12 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
       <div class="cell accent">
         <div class="k">Currently</div>
         <div class="big" style="font-size:1.15rem;letter-spacing:-.02em">Software Engineer Intern</div>
-        <div class="sub">@ Crewtron — Flutter + AWS serverless, Stripe, Claude tooling</div>
+        <div class="sub">@ Crewtron — Flutter + AWS serverless (Python, Lambda, DynamoDB, Cognito, CDK)</div>
       </div>
       <div class="cell">
         <div class="k">Shipped</div>
         <div class="big">6<span class="u"> repos</span></div>
-        <div class="sub">production-grade, 70+ automated tests, CI on each</div>
+        <div class="sub">each with README, automated tests, and CI</div>
       </div>
       <div class="cell">
         <div class="k">Certified</div>
@@ -227,9 +244,9 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
       <div class="cell span">
         <div class="k">Core stack</div>
         <div class="chips">
-          <span class="chip">Python</span><span class="chip">Claude API</span><span class="chip">FastAPI</span>
-          <span class="chip">dbt</span><span class="chip">DuckDB</span><span class="chip">Postgres</span>
-          <span class="chip">Docker</span><span class="chip">AWS</span><span class="chip">SQL</span>
+          <span class="chip">Python</span><span class="chip">Dart</span><span class="chip">Flutter</span>
+          <span class="chip">AWS</span><span class="chip">Lambda</span><span class="chip">DynamoDB</span>
+          <span class="chip">FastAPI</span><span class="chip">Docker</span><span class="chip">SQL</span>
         </div>
       </div>
       <div class="cell">
@@ -252,34 +269,25 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
     <div class="reveal">
       <div class="tag">Selected work</div>
       <h2 class="h2">Projects that show <em>how I build</em></h2>
-      <p class="lead">Six systems I designed, built, tested, and shipped — each on GitHub with a README, automated tests, and CI. Grouped by focus: AI/ML, backend, and data engineering.</p>
+      <p class="lead">Systems I designed, built, tested, and shipped — each on GitHub with a README, automated tests, and CI. Backend and full-stack first, then data and applied-AI work.</p>
     </div>
 
     <div class="proj-grid reveal">
-      <a class="card" href="https://github.com/Ashish1916/askdocs-rag" target="_blank" rel="noopener">
-        <span class="cat ai">AI / ML</span>
-        <h3>askdocs — RAG + eval harness</h3>
-        <p class="pd">Retrieval-augmented Q&amp;A over documents (ChromaDB → grounded, cited Claude answers) with a dual evaluation harness scoring retrieval and answer quality separately.</p>
-        <div class="signal">hit@k · MRR · LLM-as-judge · abstention testing</div>
-        <div class="stack"><span>Python</span><span>Claude API</span><span>ChromaDB</span><span>FastAPI</span></div>
-        <span class="repo">View repo →</span>
-      </a>
-
-      <a class="card" href="https://github.com/Ashish1916/data-analyst-agent" target="_blank" rel="noopener">
-        <span class="cat ai">AI / ML</span>
-        <h3>data-analyst-agent</h3>
-        <p class="pd">An agent that answers natural-language questions over a SQL database via a Claude tool-use loop — inspect schema, run read-only SQL, answer — with a hard read-only boundary.</p>
-        <div class="signal">tool-use loop · read-only enforcement · cost tracking</div>
-        <div class="stack"><span>Python</span><span>Claude tool use</span><span>SQLite</span></div>
-        <span class="repo">View repo →</span>
-      </a>
-
       <a class="card" href="https://github.com/Ashish1916/fastapi-saas-api" target="_blank" rel="noopener">
         <span class="cat be">Backend</span>
         <h3>linkvault — multi-tenant SaaS API</h3>
         <p class="pd">A bookmarks SaaS API with JWT auth, strict per-user data isolation, and Stripe subscription tiers where a signed webhook is the source of truth for a user's plan.</p>
         <div class="signal">JWT · tenant isolation · Stripe webhook · 14 tests</div>
         <div class="stack"><span>FastAPI</span><span>Postgres</span><span>Stripe</span><span>Docker</span></div>
+        <span class="repo">View repo →</span>
+      </a>
+
+      <a class="card" href="https://github.com/Ashish1916/envlint" target="_blank" rel="noopener">
+        <span class="cat tool">Tooling</span>
+        <h3>envlint — CLI dev tool</h3>
+        <p class="pd">A zero-dependency CLI that lints <code>.env</code> files against a declared schema (missing / empty / mistyped / duplicate keys) with CI-friendly exit codes and JSON output.</p>
+        <div class="signal">exit codes 0/1/2 · JSON · tested on 3.12 &amp; 3.13</div>
+        <div class="stack"><span>Python</span><span>stdlib only</span></div>
         <span class="repo">View repo →</span>
       </a>
 
@@ -301,18 +309,27 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
         <span class="repo">View repo →</span>
       </a>
 
-      <a class="card" href="https://github.com/Ashish1916/envlint" target="_blank" rel="noopener">
-        <span class="cat be">Tooling</span>
-        <h3>envlint — CLI dev tool</h3>
-        <p class="pd">A zero-dependency CLI that lints <code>.env</code> files against a declared schema (missing / empty / mistyped / duplicate keys) with CI-friendly exit codes and JSON output.</p>
-        <div class="signal">exit codes 0/1/2 · JSON · tested on 3.12 &amp; 3.13</div>
-        <div class="stack"><span>Python</span><span>stdlib only</span></div>
+      <a class="card" href="https://github.com/Ashish1916/askdocs-rag" target="_blank" rel="noopener">
+        <span class="cat ai">Applied AI</span>
+        <h3>askdocs — RAG + eval harness</h3>
+        <p class="pd">Retrieval-augmented Q&amp;A over documents (ChromaDB → grounded, cited answers) with a dual evaluation harness scoring retrieval and answer quality separately.</p>
+        <div class="signal">hit@k · MRR · LLM-as-judge · abstention testing</div>
+        <div class="stack"><span>Python</span><span>ChromaDB</span><span>FastAPI</span></div>
+        <span class="repo">View repo →</span>
+      </a>
+
+      <a class="card" href="https://github.com/Ashish1916/data-analyst-agent" target="_blank" rel="noopener">
+        <span class="cat ai">Applied AI</span>
+        <h3>data-analyst-agent</h3>
+        <p class="pd">An agent that answers natural-language questions over a SQL database via a tool-use loop — inspect schema, run read-only SQL, answer — with a hard read-only boundary.</p>
+        <div class="signal">tool-use loop · read-only enforcement · cost tracking</div>
+        <div class="stack"><span>Python</span><span>SQLite</span></div>
         <span class="repo">View repo →</span>
       </a>
     </div>
 
     <div class="earlier reveal">
-      <div class="earlier-head">// Earlier data &amp; ML work</div>
+      <div class="earlier-head">Earlier data &amp; analytics work</div>
       <div class="mini-grid">
         <a class="mini" href="https://github.com/Ashish1916/Aws-cost-intelligence-dashboard" target="_blank" rel="noopener">
           <b>AWS Cost Intelligence Dashboard</b><span class="m">500K rows · $16.6K saved</span></a>
@@ -333,9 +350,9 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
     <div class="about-grid">
       <img class="photo" src="ashish.jpeg" alt="Ashish Kosana">
       <div>
-        <p>I'm a Computer Science graduate (UMass Lowell) who likes building the <b>whole system</b> — from data ingestion and modeling, through the API and the ML, to the tests and CI that keep it honest.</p>
-        <p>Lately I've been building with <b>LLMs</b> (RAG, tool-use agents, and the evaluation harnesses that tell you whether they actually work) and shipping <b>backend services</b> and <b>data pipelines</b> with the same production habits: typed code, tests, CI, and observability.</p>
-        <p>I'm currently a <b>Software Engineer Intern at Crewtron</b>, and I'm looking for full-time AI/ML, backend, or data engineering roles. Microsoft-certified in Azure DBA (DP-300) and Fabric Data Engineering (DP-700).</p>
+        <p>I'm a Computer Science graduate (UMass Lowell) and a <b>full-stack software engineer</b> — I like owning a feature end-to-end, from the Flutter screen a user taps to the AWS Lambda that answers it.</p>
+        <p>At <b>Crewtron</b> I build on a Flutter mobile app and an <b>AWS serverless backend</b> (Python, Lambda, DynamoDB, API Gateway, Cognito, CDK) — shipping features like geofenced clock-in/out with a live crew map, with the production habits that keep them honest: tests, code review, and CI.</p>
+        <p>I care about clean, simple, maintainable code and the small UX details that make a feature feel obvious. I'm looking for <b>Software Engineer / backend / full-stack</b> roles. Microsoft-certified in Azure DBA (DP-300) and Fabric Data Engineering (DP-700).</p>
       </div>
     </div>
   </div>
@@ -345,12 +362,12 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
   <div class="wrap">
     <div class="reveal"><div class="tag">Skills</div><h2 class="h2">What I work with</h2></div>
     <div class="skills-grid reveal">
-      <div class="sk-cat"><div class="skl">Languages</div><div class="sk-list"><span class="sk core">Python</span><span class="sk core">SQL</span><span class="sk">Dart</span><span class="sk">Bash</span></div></div>
-      <div class="sk-cat"><div class="skl">AI / LLM</div><div class="sk-list"><span class="sk core">Claude API</span><span class="sk core">Tool use / agents</span><span class="sk core">RAG</span><span class="sk">Embeddings / vector search</span><span class="sk">Prompt engineering</span><span class="sk">LLM-as-judge eval</span></div></div>
-      <div class="sk-cat"><div class="skl">Backend</div><div class="sk-list"><span class="sk core">FastAPI</span><span class="sk">REST APIs</span><span class="sk">JWT / OAuth2</span><span class="sk">SQLModel / SQLAlchemy</span><span class="sk">Stripe</span><span class="sk">Postgres</span></div></div>
-      <div class="sk-cat"><div class="skl">Data &amp; ML</div><div class="sk-list"><span class="sk core">dbt</span><span class="sk core">DuckDB</span><span class="sk">Snowflake</span><span class="sk">star-schema modeling</span><span class="sk">scikit-learn</span><span class="sk">MLflow</span><span class="sk">Tableau / Power BI</span></div></div>
-      <div class="sk-cat"><div class="skl">Cloud &amp; DevOps</div><div class="sk-list"><span class="sk core">AWS (Lambda, Cognito, S3, CDK)</span><span class="sk core">Docker</span><span class="sk">GitHub Actions (CI/CD)</span><span class="sk">Git</span></div></div>
-      <div class="sk-cat"><div class="skl">Practices</div><div class="sk-list"><span class="sk">pytest / test-first</span><span class="sk">data quality testing</span><span class="sk">observability</span><span class="sk">OWASP Top 10</span></div></div>
+      <div class="sk-cat"><div class="skl">Languages</div><div class="sk-list"><span class="sk core">Python</span><span class="sk core">Dart</span><span class="sk core">SQL</span><span class="sk">Bash</span><span class="sk">Go (learning)</span></div></div>
+      <div class="sk-cat"><div class="skl">Mobile</div><div class="sk-list"><span class="sk core">Flutter</span><span class="sk core">Riverpod</span><span class="sk">Dio</span></div></div>
+      <div class="sk-cat"><div class="skl">Backend &amp; Cloud</div><div class="sk-list"><span class="sk core">AWS (Lambda, DynamoDB, API Gateway, Cognito, S3, CDK)</span><span class="sk core">FastAPI</span><span class="sk">REST APIs</span><span class="sk">JWT / OAuth2</span><span class="sk">Stripe</span><span class="sk">Postgres</span><span class="sk">Docker</span></div></div>
+      <div class="sk-cat"><div class="skl">Data</div><div class="sk-list"><span class="sk">dbt</span><span class="sk">DuckDB</span><span class="sk">star-schema modeling</span><span class="sk">Power BI</span></div></div>
+      <div class="sk-cat"><div class="skl">Practices</div><div class="sk-list"><span class="sk core">pytest / test-first</span><span class="sk core">CI/CD (GitHub Actions)</span><span class="sk">code review</span><span class="sk">git rebase workflow</span><span class="sk">observability</span></div></div>
+      <div class="sk-cat"><div class="skl">Also worked with</div><div class="sk-list"><span class="sk">Claude API</span><span class="sk">RAG</span><span class="sk">scikit-learn</span><span class="sk">MLflow</span></div></div>
     </div>
   </div>
 </section>
@@ -365,9 +382,9 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
           <div class="role">Software Engineer Intern</div>
           <div class="loc">Tempe, AZ</div>
           <ul>
-            <li>Ship cross-platform <b>mobile features in Flutter</b> integrated with the <b>Stripe API</b> for client invoicing and payments.</li>
-            <li>Design <b>REST APIs with AWS Cognito</b> authentication; manage <b>AWS CDK</b> infrastructure and IAM policies.</li>
-            <li>Integrate the <b>Claude API</b> + Python automation into product workflow analysis; drive quality via QA and security review (OWASP Top 10).</li>
+            <li>Ship cross-platform <b>features in Flutter</b> on an <b>AWS serverless backend</b> (Python, Lambda, DynamoDB, API Gateway) — including geofenced clock-in/out with a live crew map.</li>
+            <li>Design <b>REST APIs with AWS Cognito</b> authentication; manage <b>AWS CDK</b> infrastructure and IAM policies; integrate the <b>Stripe API</b> for invoicing and payments.</li>
+            <li>Work in a disciplined engineering flow — unit/functional tests, multi-pass code review, and CI; drive quality and security review (OWASP Top 10).</li>
           </ul>
         </div>
       </div>
@@ -409,9 +426,9 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
 
 <section id="contact">
   <div class="wrap reveal">
-    <div class="tag" style="justify-content:center">Get in touch</div>
+    <div class="tag">Get in touch</div>
     <h2 class="h2">Let's build something</h2>
-    <p class="lead">I'm looking for full-time <b>AI/ML, backend, or data engineering</b> roles — authorized to work in the U.S. (F-1 OPT), open to H-1B sponsorship and nationwide relocation.</p>
+    <p class="lead">I'm looking for full-time <b>Software Engineer / backend / full-stack</b> roles — authorized to work in the U.S. (F-1 OPT), open to H-1B sponsorship and nationwide relocation.</p>
     <div class="channels">
       <a class="primary" href="mailto:ashishkosana@gmail.com">✉ ashishkosana@gmail.com</a>
       <a href="https://linkedin.com/in/ashishkosana" target="_blank" rel="noopener">in · LinkedIn ↗</a>
@@ -424,17 +441,14 @@ footer .fc{font-family:var(--mono);font-size:.68rem;color:var(--faint)}
 
 <footer>
   <div class="fl">Ashish Kosana</div>
-  <div class="fc">© 2026 · ashishkosana.com · built with semantic HTML, CSS &amp; a little JS</div>
+  <div class="fc">© 2026 · ashishkosana.com</div>
 </footer>
 
 <script>
-// reveal on scroll
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-// active nav link
 const secs=[...document.querySelectorAll('section[id],header[id]')],links=[...document.querySelectorAll('.nav-links a')];
 addEventListener('scroll',()=>{let cur='';for(const s of secs){if(scrollY>=s.offsetTop-90)cur=s.id}links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur))},{passive:true});
-// mobile menu
 const menu=document.getElementById('menu'),nl=document.getElementById('navlinks');
 menu.addEventListener('click',()=>nl.classList.toggle('open'));
 nl.addEventListener('click',e=>{if(e.target.tagName==='A')nl.classList.remove('open')});
