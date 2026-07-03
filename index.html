@@ -1,457 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ashish Kosana — Software Engineer (Full-Stack)</title>
-<meta name="description" content="Ashish Kosana — full-stack software engineer. I build products end-to-end: Flutter mobile on AWS serverless backends (Python, Lambda, DynamoDB). Tested, deployed, observable. B.S. Computer Science, UMass Lowell.">
-<meta name="theme-color" content="#4F46E5">
-<link rel="canonical" href="https://www.ashishkosana.com/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ashish Kosana — Software Engineer (Full-Stack)">
-<meta property="og:description" content="Full-stack software engineer — Flutter + AWS serverless. Products shipped end-to-end, tested and observable.">
-<meta property="og:url" content="https://www.ashishkosana.com/">
-<meta property="og:image" content="https://www.ashishkosana.com/ashish.jpeg">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌘</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  /* Brand indigo (Crewtron pattern, different hue). Token names kept as --green* for simplicity. */
-  --green:#4F46E5; --green-400:#6366F1; --green-700:#4338CA; --green-800:#3730A3;
-  --grad:linear-gradient(135deg,#6366F1,#4F46E5);
-  --brand-50:#eef2ff; --brand-100:#e0e7ff;
-  /* Cool green-tinted neutrals */
-  --n0:#ffffff; --n25:#fbfcfc; --n50:#f6f8f8; --n100:#eef2f1; --n150:#e6ebea;
-  --n200:#dde4e2; --n300:#c4cecb; --n400:#8a9692; --n500:#586763; --n600:#4e5a56;
-  --n700:#38423f; --n800:#232b29; --ink:#101513;
-  --bg:var(--n0); --wash:var(--n25); --surface:var(--n0); --border:var(--n200);
-  --border-soft:var(--n100); --text:var(--ink); --text-soft:var(--n600); --text-mute:var(--n500);
-  --display:"Space Grotesk","Plus Jakarta Sans",system-ui,sans-serif;
-  --body:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
-  --mono:"Space Grotesk",ui-monospace,"SF Mono",Menlo,monospace;
-  --max:1140px;
-  --e1:0 1px 2px rgba(16,40,33,.05),0 1px 1px rgba(16,40,33,.05);
-  --e2:0 2px 4px rgba(16,40,33,.04),0 6px 16px rgba(16,40,33,.06);
-  --e3:0 1px 3px rgba(16,40,33,.05),0 10px 24px rgba(16,40,33,.07),0 30px 60px -24px rgba(11,87,56,.16);
-  --e-brand:0 1px 2px rgba(67,56,202,.28),0 8px 20px -6px rgba(79,70,229,.4);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;font-size:16px;letter-spacing:-.01em;overflow-x:hidden;
-  background-image:radial-gradient(52rem 34rem at 88% -12%,rgba(79,70,229,.08),transparent 62%);background-attachment:fixed}
-a{color:inherit;text-decoration:none}
-::selection{background:var(--brand-100);color:var(--green-800)}
-::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:var(--n50)}::-webkit-scrollbar-thumb{background:var(--n300);border-radius:9px;border:2px solid var(--n50)}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
-.mono{font-family:var(--mono)}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashish Kosana — Software Engineer</title>
+    <meta name="description" content="Ashish Kosana — full-stack software engineer. I build products end-to-end: Flutter mobile on AWS serverless backends (Python, Lambda, DynamoDB). B.S. Computer Science, UMass Lowell.">
+    <meta name="theme-color" content="#4F46E5">
+    <link rel="canonical" href="https://www.ashishkosana.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ashish Kosana — Software Engineer">
+    <meta property="og:description" content="Full-stack software engineer — Flutter + AWS serverless. Products shipped end-to-end.">
+    <meta property="og:url" content="https://www.ashishkosana.com/">
+    <meta property="og:image" content="https://www.ashishkosana.com/ashish-new.jpeg">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌘</text></svg>">
 
-/* nav */
-nav{position:fixed;inset:0 0 auto 0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;
-  padding:0 28px;background:rgba(255,255,255,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-soft)}
-.logo{font-family:var(--display);font-weight:700;font-size:1.02rem;letter-spacing:-.02em}
-.logo b{color:var(--green-700)}
-.nav-links{display:flex;gap:30px;list-style:none}
-.nav-links a{font-size:.86rem;font-weight:500;color:var(--text-soft);transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--green-700)}
-.nav-right{display:flex;align-items:center;gap:16px}
-.dot{display:inline-flex;align-items:center;gap:7px;font-size:.76rem;font-weight:600;color:var(--green-700)}
-.dot::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(79,70,229,.5);animation:pulse 2.4s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(79,70,229,.5)}70%{box-shadow:0 0 0 8px rgba(79,70,229,0)}100%{box-shadow:0 0 0 0 rgba(79,70,229,0)}}
-.btn{font-size:.82rem;font-weight:600;padding:9px 17px;border-radius:10px;border:1px solid var(--border);color:var(--text);background:var(--n0);transition:.2s;white-space:nowrap}
-.btn:hover{border-color:var(--green-400);color:var(--green-700);box-shadow:var(--e1)}
-.btn-solid{background:var(--grad);color:#fff;border:none;box-shadow:var(--e-brand)}
-.btn-solid:hover{color:#fff;transform:translateY(-1px);filter:saturate(1.06)}
-.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+    <!-- =====BOX ICONS===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-/* hero */
-#hero{padding:150px 0 90px}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-.avail{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;font-weight:600;color:var(--green-800);
-  border:1px solid var(--brand-100);background:var(--brand-50);padding:6px 14px;border-radius:99px;margin-bottom:26px}
-.avail::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green)}
-h1{font-family:var(--display);font-size:clamp(2.6rem,6vw,4.3rem);font-weight:700;line-height:1.03;letter-spacing:-.035em;margin-bottom:18px}
-h1 .grn{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.roles{font-size:.95rem;font-weight:600;color:var(--text-soft);margin-bottom:22px}
-.roles b{color:var(--green-700);font-weight:600}
-.pitch{color:var(--text-soft);font-size:1.08rem;max-width:31em;margin-bottom:34px}
-.pitch b{color:var(--text);font-weight:600}
-.cta{display:flex;gap:12px;flex-wrap:wrap}
-.cta .btn{padding:12px 22px;font-size:.85rem}
+    <style>
+    /*===== GOOGLE FONTS =====*/
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+    /*===== VARIABLES CSS =====*/
+    :root {
+      --header-height: 3rem;
+      --font-semi: 600;
+      /* Indigo brand — hsl(243) ≈ #4F46E5 */
+      --hue-color: 243;
+      --first-color: hsl(var(--hue-color), 75%, 59%);
+      --first-color-dark: hsl(var(--hue-color), 64%, 42%);
+      --first-color-lighter: hsl(var(--hue-color), 92%, 96%);
+      --second-color: hsl(var(--hue-color), 56%, 12%);
+      --body-font: "Poppins", sans-serif;
+      --big-font-size: 2rem;
+      --h2-font-size: 1.25rem;
+      --normal-font-size: .938rem;
+      --smaller-font-size: .75rem;
+      --mb-2: 1rem;
+      --mb-4: 2rem;
+      --mb-5: 2.5rem;
+      --mb-6: 3rem;
+      --z-back: -10;
+      --z-fixed: 100;
+    }
+    @media screen and (min-width: 968px) {
+      :root {
+        --big-font-size: 3.5rem;
+        --h2-font-size: 2rem;
+        --normal-font-size: 1rem;
+        --smaller-font-size: .875rem;
+      }
+    }
 
-/* bento */
-.bento{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cell{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;transition:.2s;box-shadow:var(--e1)}
-.cell:hover{border-color:var(--green-400);transform:translateY(-2px);box-shadow:var(--e2)}
-.cell .k{font-size:.64rem;font-weight:700;color:var(--green-700);letter-spacing:.1em;text-transform:uppercase;margin-bottom:9px}
-.cell .big{font-family:var(--display);font-size:1.9rem;font-weight:700;letter-spacing:-.03em;line-height:1}
-.cell .big .u{font-size:.9rem;color:var(--green-700);font-weight:500}
-.cell .sub{font-size:.82rem;color:var(--text-mute);margin-top:6px;line-height:1.45}
-.cell.span{grid-column:1/-1}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-.chip{font-size:.72rem;font-weight:500;color:var(--text-soft);border:1px solid var(--border);border-radius:7px;padding:4px 9px;background:var(--n25)}
-.cell.accent{background:linear-gradient(135deg,var(--brand-50),#fff);border-color:var(--brand-100)}
+    /*===== BASE =====*/
+    *, ::before, ::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: var(--header-height) 0 0 0;
+      font-family: var(--body-font);
+      font-size: var(--normal-font-size);
+      color: var(--second-color);
+    }
+    h1, h2, h3, p { margin: 0; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    a { text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
 
-/* sections */
-section{padding:88px 0;border-top:1px solid var(--border-soft)}
-section:nth-of-type(even){background:var(--wash)}
-.tag{font-size:.74rem;font-weight:700;color:var(--green-700);letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.tag::before{content:'';width:22px;height:2px;background:var(--grad);border-radius:2px}
-.h2{font-family:var(--display);font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:700;letter-spacing:-.03em;margin-bottom:14px}
-.lead{color:var(--text-soft);max-width:44em;margin-bottom:40px}
+    /*===== CLASS CSS ===== */
+    .section-title {
+      position: relative;
+      font-size: var(--h2-font-size);
+      color: var(--first-color);
+      margin-top: var(--mb-2);
+      margin-bottom: var(--mb-4);
+      text-align: center;
+    }
+    .section-title::after {
+      position: absolute; content: "";
+      width: 64px; height: .18rem;
+      left: 0; right: 0; margin: auto; top: 2rem;
+      background-color: var(--first-color);
+    }
+    .section { padding-top: 3rem; padding-bottom: 2rem; }
 
-/* projects */
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;transition:.22s;position:relative;overflow:hidden;box-shadow:var(--e1)}
-.card::after{content:'';position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .3s}
-.card:hover{border-color:var(--green-400);transform:translateY(-4px);box-shadow:var(--e3)}
-.card:hover::after{transform:scaleX(1)}
-.cat{font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:6px;align-self:flex-start;margin-bottom:14px}
-.cat.be{color:var(--green-800);background:var(--brand-50);border:1px solid var(--brand-100)}
-.cat.tool{color:#2c54a8;background:#eef3fe;border:1px solid #d5e2fb}
-.cat.da{color:#8a5a12;background:#fdf6ec;border:1px solid #f6e5c9}
-.cat.ai{color:#6b4fc0;background:#f3f0fd;border:1px solid #e4dcfa}
-.card h3{font-family:var(--display);font-size:1.14rem;font-weight:600;letter-spacing:-.02em;margin-bottom:8px}
-.card .pd{font-size:.9rem;color:var(--text-soft);line-height:1.55;margin-bottom:14px;flex:1}
-.card .pd code{font-family:var(--mono);font-size:.85em;background:var(--n100);padding:1px 5px;border-radius:5px}
-.signal{font-size:.72rem;font-weight:600;color:var(--green-700);margin-bottom:12px}
-.stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.stack span{font-size:.7rem;font-weight:500;color:var(--text-mute);border:1px solid var(--border);border-radius:6px;padding:3px 8px;background:var(--n25)}
-.repo{font-size:.8rem;font-weight:600;color:var(--text-soft);display:inline-flex;align-items:center;gap:6px;transition:gap .2s,color .2s}
-.card:hover .repo{color:var(--green-700);gap:10px}
-.earlier{margin-top:36px}
-.earlier-head{font-size:.74rem;font-weight:700;color:var(--text-mute);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
-.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.mini{display:flex;justify-content:space-between;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:.2s;box-shadow:var(--e1)}
-.mini:hover{border-color:var(--green-400);transform:translateY(-2px);box-shadow:var(--e2)}
-.mini b{font-weight:600;font-size:.92rem}
-.mini .m{font-size:.72rem;font-weight:600;color:var(--green-700);white-space:nowrap}
+    /*===== LAYOUT =====*/
+    .bd-grid {
+      max-width: 1024px;
+      display: grid;
+      margin-left: var(--mb-2);
+      margin-right: var(--mb-2);
+    }
+    .l-header {
+      width: 100%;
+      position: fixed; top: 0; left: 0;
+      z-index: var(--z-fixed);
+      background-color: #fff;
+      box-shadow: 0 1px 4px rgba(146, 161, 176, .15);
+    }
 
-/* about */
-.about-grid{display:grid;grid-template-columns:210px 1fr;gap:46px;align-items:start}
-.photo{width:210px;height:210px;border-radius:20px;object-fit:cover;border:1px solid var(--border);box-shadow:var(--e2)}
-.about-grid p{color:var(--text-soft);margin-bottom:14px}
-.about-grid p b{color:var(--text);font-weight:600}
+    /*===== NAV =====*/
+    .nav {
+      height: var(--header-height);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: var(--font-semi);
+    }
+    @media screen and (max-width: 767px) {
+      .nav__menu {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        width: 80%; height: 100%;
+        padding: 2rem;
+        background-color: var(--second-color);
+        transition: .5s;
+      }
+    }
+    .nav__item { margin-bottom: var(--mb-4); }
+    .nav__link { position: relative; color: #fff; }
+    .nav__link:hover::after {
+      position: absolute; content: "";
+      width: 100%; height: .18rem;
+      left: 0; top: 2rem;
+      background-color: var(--first-color);
+    }
+    .nav__logo { color: var(--second-color); }
+    .nav__toggle { color: var(--second-color); font-size: 1.5rem; cursor: pointer; }
+    .active-link::after {
+      position: absolute; content: "";
+      width: 100%; height: .18rem;
+      left: 0; top: 2rem;
+      background-color: var(--first-color);
+    }
+    .show { right: 0; }
 
-/* skills */
-.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 44px}
-.sk-cat .skl{font-size:.7rem;font-weight:700;color:var(--text-mute);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-soft)}
-.sk-list{display:flex;flex-wrap:wrap;gap:8px}
-.sk{font-size:.82rem;font-weight:500;color:var(--text-soft);border:1px solid var(--border);border-radius:8px;padding:6px 12px;background:var(--n0);transition:.2s;cursor:default}
-.sk:hover{border-color:var(--green-400);color:var(--green-700)}
-.sk.core{color:var(--green-800);border-color:var(--brand-100);background:var(--brand-50)}
+    /*===== HOME =====*/
+    .home { position: relative; row-gap: 5rem; padding: 4rem 0 5rem; }
+    .home__data { align-self: center; }
+    .home__title { font-size: var(--big-font-size); margin-bottom: var(--mb-2); }
+    .home__title-color { color: var(--first-color); }
+    .home__tagline { margin-bottom: var(--mb-5); color: hsl(var(--hue-color), 12%, 38%); max-width: 26rem; }
+    .home__buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .home__social { display: flex; flex-direction: column; }
+    .home__social-icon {
+      width: max-content;
+      margin-bottom: var(--mb-2);
+      font-size: 1.5rem;
+      color: var(--second-color);
+    }
+    .home__social-icon:hover { color: var(--first-color); }
+    .home__img { position: absolute; right: 0; bottom: 0; width: 260px; }
+    .home__blob { fill: var(--first-color); }
+    .home__blob-img { width: 360px; }
 
-/* experience */
-.exp{display:grid;grid-template-columns:210px 1fr;gap:42px;padding:32px 0;border-top:1px solid var(--border-soft)}
-.exp:first-of-type{border-top:none}
-.exp .when{font-size:.8rem;font-weight:600;color:var(--text-mute)}
-.exp .co{font-family:var(--display);font-size:.9rem;font-weight:600;color:var(--green-700);margin-top:4px}
-.exp .role{font-family:var(--display);font-size:1.24rem;font-weight:600;letter-spacing:-.02em;margin-bottom:3px}
-.exp .loc{font-size:.8rem;color:var(--text-mute);margin-bottom:14px}
-.exp ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-.exp li{color:var(--text-soft);font-size:.94rem;padding-left:20px;position:relative}
-.exp li::before{content:'▹';position:absolute;left:0;color:var(--green)}
-.exp li b{color:var(--text);font-weight:600}
+    /*BUTTONS*/
+    .button {
+      display: inline-block;
+      background-color: var(--first-color);
+      color: #fff;
+      padding: .75rem 2.5rem;
+      font-weight: var(--font-semi);
+      border-radius: .5rem;
+      transition: .3s;
+    }
+    .button:hover { box-shadow: 0px 10px 36px rgba(0, 0, 0, .15); }
+    .button--ghost {
+      background-color: transparent;
+      border: 2px solid var(--first-color);
+      color: var(--first-color);
+      padding: calc(.75rem - 2px) 2.5rem;
+    }
 
-/* education */
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.edu{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:26px;box-shadow:var(--e1)}
-.edu .deg{font-family:var(--display);font-size:1.16rem;font-weight:600;letter-spacing:-.02em;margin-bottom:5px}
-.edu .sch{font-size:.86rem;font-weight:600;color:var(--green-700);margin-bottom:3px}
-.edu .per{font-size:.78rem;color:var(--text-mute);margin-bottom:14px}
-.badges{display:flex;flex-wrap:wrap;gap:8px}
-.badge{font-size:.72rem;font-weight:500;color:var(--text-soft);border:1px solid var(--border);border-radius:7px;padding:5px 10px;background:var(--n25)}
-.badge.gold{color:var(--green-800);border-color:var(--brand-100);background:var(--brand-50)}
+    /* ===== ABOUT =====*/
+    .about__container { row-gap: 2rem; text-align: center; }
+    .about__subtitle { margin-bottom: var(--mb-2); }
+    .about__img { justify-self: center; }
+    .about__img img { width: 200px; border-radius: .5rem; }
+    .about__text { color: hsl(var(--hue-color), 12%, 32%); }
 
-/* contact */
-#contact{text-align:center}
-#contact .tag{justify-content:center}
-#contact .lead{margin:0 auto 36px}
-.channels{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.channels a{display:inline-flex;align-items:center;gap:9px;font-size:.88rem;font-weight:600;padding:14px 24px;border:1px solid var(--border);border-radius:12px;color:var(--text);background:var(--n0);transition:.2s;box-shadow:var(--e1)}
-.channels a:hover{border-color:var(--green-400);color:var(--green-700);transform:translateY(-2px);box-shadow:var(--e2)}
-.channels a.primary{background:var(--grad);color:#fff;border:none;box-shadow:var(--e-brand)}
-.channels a.primary:hover{color:#fff}
+    /* ===== SKILLS =====*/
+    .skills__container { row-gap: 2rem; text-align: center; }
+    .skills__subtitle { margin-bottom: var(--mb-2); }
+    .skills__text { margin-bottom: var(--mb-4); color: hsl(var(--hue-color), 12%, 32%); }
+    .skills__data {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      font-weight: var(--font-semi);
+      padding: .5rem 1rem;
+      margin-bottom: var(--mb-4);
+      border-radius: .5rem;
+      box-shadow: 0px 4px 25px rgba(14, 36, 49, .15);
+    }
+    .skills__icon { font-size: 2rem; margin-right: var(--mb-2); color: var(--first-color); }
+    .skills__names { display: flex; align-items: center; }
+    .skills__bar {
+      position: absolute; left: 0; bottom: 0;
+      background-color: var(--first-color);
+      height: .25rem; border-radius: .5rem;
+      z-index: var(--z-back);
+    }
+    .skills__flutter { width: 90%; }
+    .skills__python { width: 85%; }
+    .skills__aws { width: 80%; }
+    .skills__ts { width: 75%; }
+    .skills__extra { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
+    .skills__tag {
+      background-color: var(--first-color-lighter);
+      color: var(--first-color-dark);
+      padding: .35rem .9rem;
+      border-radius: 2rem;
+      font-size: var(--smaller-font-size);
+      font-weight: var(--font-semi);
+    }
 
-footer{border-top:1px solid var(--border-soft);padding:28px;display:flex;justify-content:space-between;align-items:center;max-width:var(--max);margin:0 auto;flex-wrap:wrap;gap:10px}
-footer .fl{font-family:var(--display);font-weight:700}
-footer .fc{font-size:.74rem;color:var(--text-mute)}
+    /* ===== EXPERIENCE =====*/
+    .experience__container { row-gap: 2rem; max-width: 40rem; justify-self: center; width: 100%; }
+    .experience__item {
+      position: relative;
+      padding: 1.25rem 1.5rem;
+      border-radius: .5rem;
+      box-shadow: 0px 4px 25px rgba(14, 36, 49, .15);
+      border-left: 4px solid var(--first-color);
+    }
+    .experience__role { font-size: 1.05rem; font-weight: var(--font-semi); }
+    .experience__company { color: var(--first-color); font-weight: var(--font-semi); }
+    .experience__dates { font-size: var(--smaller-font-size); color: hsl(var(--hue-color), 12%, 45%); margin-bottom: .5rem; }
+    .experience__desc { color: hsl(var(--hue-color), 12%, 32%); font-size: var(--smaller-font-size); }
 
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-.reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+    /* ===== WORK (auto-loaded from GitHub) =====*/
+    .work__container { row-gap: 2rem; }
+    .work__card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      border-radius: .5rem;
+      box-shadow: 0px 4px 25px rgba(14, 36, 49, .15);
+      transition: transform .3s, box-shadow .3s;
+      color: var(--second-color);
+      background: #fff;
+    }
+    .work__card:hover { transform: translateY(-6px); box-shadow: 0px 10px 36px rgba(14, 36, 49, .2); }
+    .work__card-header { display: flex; align-items: center; gap: .6rem; margin-bottom: .6rem; }
+    .work__card-header i { font-size: 1.5rem; color: var(--first-color); }
+    .work__name { font-weight: var(--font-semi); font-size: 1.05rem; }
+    .work__desc { flex: 1; font-size: var(--smaller-font-size); color: hsl(var(--hue-color), 12%, 32%); margin-bottom: 1rem; }
+    .work__meta { display: flex; align-items: center; gap: 1rem; font-size: var(--smaller-font-size); color: hsl(var(--hue-color), 12%, 45%); }
+    .work__meta i { vertical-align: -2px; color: var(--first-color); }
+    .work__note { text-align: center; font-size: var(--smaller-font-size); color: hsl(var(--hue-color), 12%, 45%); margin-top: var(--mb-4); }
 
-@media(max-width:880px){
-  .nav-links{display:none}.menu-toggle{display:block}
-  .nav-links.open{display:flex;position:fixed;top:64px;left:0;right:0;flex-direction:column;gap:0;background:rgba(255,255,255,.98);border-bottom:1px solid var(--border);padding:8px 28px 16px}
-  .nav-links.open a{padding:12px 0;border-bottom:1px solid var(--border-soft)}
-  .hero-grid{grid-template-columns:1fr;gap:40px}
-  .proj-grid{grid-template-columns:1fr}.mini-grid{grid-template-columns:1fr}
-  .about-grid{grid-template-columns:1fr;gap:24px}.photo{width:140px;height:140px}
-  .skills-grid{grid-template-columns:1fr}.exp{grid-template-columns:1fr;gap:10px}.edu-grid{grid-template-columns:1fr}
-}
-</style>
+    /* ===== CONTACT =====*/
+    .contact__container { justify-items: center; row-gap: 1.5rem; text-align: center; }
+    .contact__text { color: hsl(var(--hue-color), 12%, 32%); max-width: 28rem; }
+    .contact__links { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+    /* ===== FOOTER =====*/
+    .footer {
+      background-color: var(--second-color);
+      color: #fff;
+      text-align: center;
+      font-weight: var(--font-semi);
+      padding: 2rem 0;
+    }
+    .footer__title { font-size: 2rem; margin-bottom: var(--mb-4); }
+    .footer__social { margin-bottom: var(--mb-4); }
+    .footer__icon { font-size: 1.5rem; color: #fff; margin: 0 var(--mb-2); }
+    .footer__copy { font-size: var(--smaller-font-size); }
+
+    /* ===== MEDIA QUERIES=====*/
+    @media screen and (max-width: 320px) {
+      .home { row-gap: 2rem; }
+      .home__img { width: 200px; }
+    }
+    @media screen and (min-width: 576px) {
+      .home { padding: 4rem 0 2rem; }
+      .home__social { padding-top: 0; padding-bottom: 2.5rem; flex-direction: row; align-self: flex-end; }
+      .home__social-icon { margin-bottom: 0; margin-right: var(--mb-4); }
+      .home__img { width: 300px; bottom: 25%; }
+      .about__container { grid-template-columns: repeat(2, 1fr); align-items: center; text-align: initial; }
+      .skills__container { grid-template-columns: .7fr; justify-content: center; column-gap: 1rem; }
+      .work__container { grid-template-columns: repeat(2, 1fr); column-gap: 2rem; padding-top: 2rem; }
+    }
+    @media screen and (min-width: 768px) {
+      body { margin: 0; }
+      .section { padding-top: 4rem; padding-bottom: 3rem; }
+      .section-title { margin-bottom: var(--mb-6); }
+      .section-title::after { width: 80px; top: 3rem; }
+      .nav { height: calc(var(--header-height) + 1.5rem); }
+      .nav__list { display: flex; padding-top: 0; }
+      .nav__item { margin-left: var(--mb-6); margin-bottom: 0; }
+      .nav__toggle { display: none; }
+      .nav__link { color: var(--second-color); }
+      .home { padding: 8rem 0 2rem; }
+      .home__img { width: 400px; bottom: 10%; }
+      .about__container { padding-top: 2rem; }
+      .about__img img { width: 300px; }
+      .skills__container { grid-template-columns: repeat(2, 1fr); column-gap: 2rem; align-items: center; text-align: initial; }
+      .work__container { grid-template-columns: repeat(3, 1fr); column-gap: 2rem; }
+    }
+    @media screen and (min-width: 992px) {
+      .bd-grid { margin-left: auto; margin-right: auto; }
+      .home { padding: 10rem 0 2rem; }
+      .home__img { width: 450px; }
+    }
+    </style>
 </head>
 <body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="#" class="nav__logo">Ashish Kosana</a>
+            </div>
 
-<nav>
-  <a href="#hero" class="logo">Ashish <b>Kosana</b></a>
-  <ul class="nav-links" id="navlinks">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <span class="dot">Open to work</span>
-    <a href="resume.pdf" class="btn btn-solid" target="_blank" rel="noopener">Résumé</a>
-    <button class="menu-toggle" id="menu" aria-label="Menu">☰</button>
-  </div>
-</nav>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                    <li class="nav__item"><a href="#experience" class="nav__link">Experience</a></li>
+                    <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
 
-<header id="hero">
-  <div class="wrap hero-grid">
-    <div class="reveal">
-      <span class="avail">Open to full-time roles · F-1 OPT authorized</span>
-      <h1>Ashish Kosana<br><span class="grn">builds products end-to-end.</span></h1>
-      <p class="roles"><b>Software Engineer</b> · Full-stack — Flutter + AWS serverless</p>
-      <p class="pitch">I build <b>full-stack products</b> from the mobile screen to the serverless backend — <b>Flutter</b> front ends on <b>AWS</b> (Python, Lambda, DynamoDB, API Gateway). Everything I ship is <b>tested, deployed, and observable</b>, not just a demo.</p>
-      <div class="cta">
-        <a href="#work" class="btn btn-solid">View work ↓</a>
-        <a href="https://github.com/Ashish1916" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
-        <a href="mailto:ashishkosana@gmail.com" class="btn">Email ↗</a>
-      </div>
-    </div>
-    <div class="bento reveal">
-      <div class="cell accent">
-        <div class="k">Currently</div>
-        <div class="big" style="font-size:1.15rem;letter-spacing:-.02em">Software Engineer Intern</div>
-        <div class="sub">@ Crewtron — Flutter + AWS serverless (Python, Lambda, DynamoDB, Cognito, CDK)</div>
-      </div>
-      <div class="cell">
-        <div class="k">Shipped</div>
-        <div class="big">6<span class="u"> repos</span></div>
-        <div class="sub">each with README, automated tests, and CI</div>
-      </div>
-      <div class="cell">
-        <div class="k">Certified</div>
-        <div class="big" style="font-size:1.05rem">DP-300 · DP-700</div>
-        <div class="sub">Microsoft — Azure DBA &amp; Fabric Data Engineer</div>
-      </div>
-      <div class="cell span">
-        <div class="k">Core stack</div>
-        <div class="chips">
-          <span class="chip">Python</span><span class="chip">Dart</span><span class="chip">Flutter</span>
-          <span class="chip">AWS</span><span class="chip">Lambda</span><span class="chip">DynamoDB</span>
-          <span class="chip">FastAPI</span><span class="chip">Docker</span><span class="chip">SQL</span>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== HOME =====-->
+        <section class="home bd-grid" id="home">
+            <div class="home__data">
+                <h1 class="home__title">Hi,<br>I'm <span class="home__title-color">Ashish</span><br>Software Engineer</h1>
+                <p class="home__tagline">I build full-stack products — Flutter mobile apps on AWS serverless backends (Lambda, DynamoDB, API Gateway, Cognito, CDK).</p>
+                <div class="home__buttons">
+                    <a href="#contact" class="button">Contact</a>
+                    <a href="resume.pdf" target="_blank" rel="noreferrer" class="button button--ghost">Resume</a>
+                </div>
+            </div>
+
+            <div class="home__social">
+                <a href="https://www.linkedin.com/in/ashishkosana/" target="_blank" rel="noreferrer" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
+                <a href="https://github.com/Ashish1916" target="_blank" rel="noreferrer" class="home__social-icon"><i class='bx bxl-github'></i></a>
+                <a href="mailto:ashishkosana@gmail.com" class="home__social-icon"><i class='bx bx-envelope'></i></a>
+            </div>
+
+            <div class="home__img">
+                <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <mask id="mask0" mask-type="alpha">
+                        <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                    </mask>
+                    <g mask="url(#mask0)">
+                        <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                        <image class="home__blob-img" x="35" y="0" width="410" height="467" preserveAspectRatio="xMidYMin slice" href="ashish-new.jpeg"/>
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <!--===== ABOUT =====-->
+        <section class="about section" id="about">
+            <h2 class="section-title">About</h2>
+
+            <div class="about__container bd-grid">
+                <div class="about__img">
+                    <img src="grad.jpeg" alt="Ashish Kosana at UMass Lowell graduation">
+                </div>
+
+                <div>
+                    <h2 class="about__subtitle">I'm Ashish Kosana</h2>
+                    <p class="about__text">Software engineer at Crewtron, where I build an AI-powered field-service platform end to end — the Flutter mobile app and the AWS serverless backend behind it. I care about boring root causes, readable logs, and shipping things customers actually use. Recent CS grad from UMass Lowell, based in Tempe, AZ.</p>
+                </div>
+            </div>
+        </section>
+
+        <!--===== SKILLS =====-->
+        <section class="skills section" id="skills">
+            <h2 class="section-title">Skills</h2>
+
+            <div class="skills__container bd-grid">
+                <div>
+                    <h2 class="skills__subtitle">What I work with</h2>
+                    <p class="skills__text">Full-stack, mobile-first: Flutter on the front, serverless AWS on the back — designed with CDK, secured with Cognito, stored in DynamoDB.</p>
+                    <div class="skills__data">
+                        <div class="skills__names">
+                            <i class='bx bxl-flutter skills__icon'></i>
+                            <span class="skills__name">Flutter / Dart</span>
+                        </div>
+                        <div class="skills__bar skills__flutter"></div>
+                        <div><span class="skills__percentage">90%</span></div>
+                    </div>
+                    <div class="skills__data">
+                        <div class="skills__names">
+                            <i class='bx bxl-python skills__icon'></i>
+                            <span class="skills__name">Python</span>
+                        </div>
+                        <div class="skills__bar skills__python"></div>
+                        <div><span class="skills__percentage">85%</span></div>
+                    </div>
+                    <div class="skills__data">
+                        <div class="skills__names">
+                            <i class='bx bxl-aws skills__icon'></i>
+                            <span class="skills__name">AWS Serverless</span>
+                        </div>
+                        <div class="skills__bar skills__aws"></div>
+                        <div><span class="skills__percentage">80%</span></div>
+                    </div>
+                    <div class="skills__data">
+                        <div class="skills__names">
+                            <i class='bx bxl-typescript skills__icon'></i>
+                            <span class="skills__name">TypeScript</span>
+                        </div>
+                        <div class="skills__bar skills__ts"></div>
+                        <div><span class="skills__percentage">75%</span></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="skills__subtitle">Also in the toolbox</h2>
+                    <div class="skills__extra">
+                        <span class="skills__tag">Lambda</span>
+                        <span class="skills__tag">DynamoDB</span>
+                        <span class="skills__tag">API Gateway</span>
+                        <span class="skills__tag">Cognito</span>
+                        <span class="skills__tag">AWS CDK</span>
+                        <span class="skills__tag">EventBridge</span>
+                        <span class="skills__tag">S3 / CloudFront</span>
+                        <span class="skills__tag">REST APIs</span>
+                        <span class="skills__tag">SQL</span>
+                        <span class="skills__tag">Git / GitHub Actions</span>
+                        <span class="skills__tag">Riverpod</span>
+                        <span class="skills__tag">Dio</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== EXPERIENCE =====-->
+        <section class="experience section" id="experience">
+            <h2 class="section-title">Experience & Education</h2>
+
+            <div class="experience__container bd-grid">
+                <div class="experience__item">
+                    <h3 class="experience__role">Software Engineer — <span class="experience__company">Crewtron</span></h3>
+                    <p class="experience__dates">May 2026 – Present · Tempe, AZ</p>
+                    <p class="experience__desc">Building an AI-powered field-service platform: Flutter mobile app + AWS serverless backend (Lambda, DynamoDB, API Gateway, Cognito, CDK). Shipped client-server state reconciliation, retry-policy fixes, and notification improvements used by real crews daily.</p>
+                </div>
+                <div class="experience__item">
+                    <h3 class="experience__role">B.S. Computer Science — <span class="experience__company">UMass Lowell</span></h3>
+                    <p class="experience__dates">Sept 2024 – Dec 2025</p>
+                    <p class="experience__desc">Graduated December 2025. Focus on software engineering and systems.</p>
+                </div>
+            </div>
+        </section>
+
+        <!--===== WORK =====-->
+        <section class="work section" id="work">
+            <h2 class="section-title">Work</h2>
+
+            <div class="work__container bd-grid" id="work-grid">
+                <!-- Project cards render here from the GitHub API -->
+            </div>
+            <p class="work__note">Live from <a href="https://github.com/Ashish1916" target="_blank" rel="noreferrer" style="color: var(--first-color); font-weight: 600;">my GitHub</a> — repos tagged <code>portfolio</code> appear here automatically.</p>
+        </section>
+
+        <!--===== CONTACT =====-->
+        <section class="contact section" id="contact">
+            <h2 class="section-title">Contact</h2>
+
+            <div class="contact__container bd-grid">
+                <p class="contact__text">Open to full-time software engineering roles. The fastest ways to reach me:</p>
+                <div class="contact__links">
+                    <a href="mailto:ashishkosana@gmail.com" class="button">Email me</a>
+                    <a href="https://www.linkedin.com/in/ashishkosana/" target="_blank" rel="noreferrer" class="button button--ghost">LinkedIn</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Ashish Kosana</p>
+        <div class="footer__social">
+            <a href="https://www.linkedin.com/in/ashishkosana/" target="_blank" rel="noreferrer" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/Ashish1916" target="_blank" rel="noreferrer" class="footer__icon"><i class='bx bxl-github'></i></a>
+            <a href="mailto:ashishkosana@gmail.com" class="footer__icon"><i class='bx bx-envelope'></i></a>
         </div>
-      </div>
-      <div class="cell">
-        <div class="k">Education</div>
-        <div class="big" style="font-size:1.05rem">B.S. CS</div>
-        <div class="sub">UMass Lowell · GPA 3.51 · Dean's List</div>
-      </div>
-      <div class="cell">
-        <div class="k">Based in</div>
-        <div class="big" style="font-size:1.05rem">Tempe, AZ</div>
-        <div class="sub">open to relocation, nationwide</div>
-      </div>
-    </div>
-  </div>
-</header>
+        <p class="footer__copy">&#169; Ashish Kosana</p>
+    </footer>
 
-<main>
-<section id="work">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="tag">Selected work</div>
-      <h2 class="h2">Projects that show <em>how I build</em></h2>
-      <p class="lead">Systems I designed, built, tested, and shipped — each on GitHub with a README, automated tests, and CI. Backend and full-stack first, then data and applied-AI work.</p>
-    </div>
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
 
-    <div class="proj-grid reveal">
-      <a class="card" href="https://github.com/Ashish1916/fastapi-saas-api" target="_blank" rel="noopener">
-        <span class="cat be">Backend</span>
-        <h3>linkvault — multi-tenant SaaS API</h3>
-        <p class="pd">A bookmarks SaaS API with JWT auth, strict per-user data isolation, and Stripe subscription tiers where a signed webhook is the source of truth for a user's plan.</p>
-        <div class="signal">JWT · tenant isolation · Stripe webhook · 14 tests</div>
-        <div class="stack"><span>FastAPI</span><span>Postgres</span><span>Stripe</span><span>Docker</span></div>
-        <span class="repo">View repo →</span>
-      </a>
+    <script>
+    /*===== MENU SHOW/HIDE =====*/
+    const navMenu = document.getElementById('nav-menu');
+    document.getElementById('nav-toggle').addEventListener('click', () => navMenu.classList.toggle('show'));
+    document.querySelectorAll('.nav__link').forEach(l => l.addEventListener('click', () => navMenu.classList.remove('show')));
 
-      <a class="card" href="https://github.com/Ashish1916/envlint" target="_blank" rel="noopener">
-        <span class="cat tool">Tooling</span>
-        <h3>envlint — CLI dev tool</h3>
-        <p class="pd">A zero-dependency CLI that lints <code>.env</code> files against a declared schema (missing / empty / mistyped / duplicate keys) with CI-friendly exit codes and JSON output.</p>
-        <div class="signal">exit codes 0/1/2 · JSON · tested on 3.12 &amp; 3.13</div>
-        <div class="stack"><span>Python</span><span>stdlib only</span></div>
-        <span class="repo">View repo →</span>
-      </a>
+    /*===== ACTIVE LINK ON SCROLL =====*/
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.pageYOffset;
+      sections.forEach(s => {
+        const top = s.offsetTop - 58, h = s.offsetHeight, id = s.getAttribute('id');
+        const link = document.querySelector('.nav__menu a[href*=' + id + ']');
+        if (link) link.classList.toggle('active-link', scrollY > top && scrollY <= top + h);
+      });
+    });
 
-      <a class="card" href="https://github.com/Ashish1916/retail-data-pipeline" target="_blank" rel="noopener">
-        <span class="cat da">Data</span>
-        <h3>retail-data-pipeline</h3>
-        <p class="pd">A modern data-stack pipeline: source data → DuckDB → layered dbt models into a star schema, with data quality enforced as a build gate on every run.</p>
-        <div class="signal">staging → star schema → marts · 26 dbt tests · CI</div>
-        <div class="stack"><span>dbt</span><span>DuckDB</span><span>SQL</span><span>Python</span></div>
-        <span class="repo">View repo →</span>
-      </a>
+    /*===== PROJECTS — live from the GitHub API =====*/
+    /* Any public repo tagged with the `portfolio` topic shows up here
+       automatically — no redeploy needed for new projects. */
+    const LANG_ICONS = {
+      Python: 'bxl-python', Dart: 'bxl-flutter', TypeScript: 'bxl-typescript',
+      JavaScript: 'bxl-javascript', HTML: 'bxl-html5', CSS: 'bxl-css3',
+    };
+    const FALLBACK = [
+      { name: 'career-copilot', description: 'Personal job-search agent — daily briefing (Gmail triage + scored job matches) on AWS serverless.', language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Ashish1916/career-copilot' },
+      { name: 'ai-clone', description: 'Chat-with-my-AI-clone site on AWS serverless (CDK, Lambda, DynamoDB, CloudFront).', language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Ashish1916/ai-clone' },
+      { name: 'linkvault', description: 'Save and organize links with tags and search.', language: 'TypeScript', stargazers_count: 0, html_url: 'https://github.com/Ashish1916/linkvault' },
+      { name: 'envlint', description: 'Lint .env files against an example schema.', language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Ashish1916/envlint' },
+    ];
 
-      <a class="card" href="https://github.com/Ashish1916/streaming-analytics" target="_blank" rel="noopener">
-        <span class="cat da">Data</span>
-        <h3>streaming-analytics</h3>
-        <p class="pd">Event-time windowed stream processing with watermarks and explicit late-event handling — the model used by Flink / Spark Structured Streaming — sinking finalized windows to DuckDB.</p>
-        <div class="signal">tumbling windows · watermark · late-data policy</div>
-        <div class="stack"><span>Python</span><span>DuckDB</span></div>
-        <span class="repo">View repo →</span>
-      </a>
+    function renderProjects(repos) {
+      const grid = document.getElementById('work-grid');
+      grid.innerHTML = repos.map(r => `
+        <a class="work__card" href="${r.html_url}" target="_blank" rel="noreferrer">
+          <div class="work__card-header">
+            <i class='bx ${LANG_ICONS[r.language] || 'bx-code-alt'}'></i>
+            <span class="work__name">${r.name}</span>
+          </div>
+          <p class="work__desc">${r.description || ''}</p>
+          <div class="work__meta">
+            ${r.language ? `<span><i class='bx bx-code-curly'></i> ${r.language}</span>` : ''}
+            <span><i class='bx bx-star'></i> ${r.stargazers_count}</span>
+          </div>
+        </a>`).join('');
+    }
 
-      <a class="card" href="https://github.com/Ashish1916/askdocs-rag" target="_blank" rel="noopener">
-        <span class="cat ai">Applied AI</span>
-        <h3>askdocs — RAG + eval harness</h3>
-        <p class="pd">Retrieval-augmented Q&amp;A over documents (ChromaDB → grounded, cited answers) with a dual evaluation harness scoring retrieval and answer quality separately.</p>
-        <div class="signal">hit@k · MRR · LLM-as-judge · abstention testing</div>
-        <div class="stack"><span>Python</span><span>ChromaDB</span><span>FastAPI</span></div>
-        <span class="repo">View repo →</span>
-      </a>
+    fetch('https://api.github.com/users/Ashish1916/repos?per_page=100&sort=updated')
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(repos => {
+        const tagged = repos.filter(r => (r.topics || []).includes('portfolio') && !r.fork);
+        renderProjects(tagged.length ? tagged : FALLBACK);
+        revealCards();
+      })
+      .catch(() => { renderProjects(FALLBACK); revealCards(); });
 
-      <a class="card" href="https://github.com/Ashish1916/data-analyst-agent" target="_blank" rel="noopener">
-        <span class="cat ai">Applied AI</span>
-        <h3>data-analyst-agent</h3>
-        <p class="pd">An agent that answers natural-language questions over a SQL database via a tool-use loop — inspect schema, run read-only SQL, answer — with a hard read-only boundary.</p>
-        <div class="signal">tool-use loop · read-only enforcement · cost tracking</div>
-        <div class="stack"><span>Python</span><span>SQLite</span></div>
-        <span class="repo">View repo →</span>
-      </a>
-    </div>
-
-    <div class="earlier reveal">
-      <div class="earlier-head">Earlier data &amp; analytics work</div>
-      <div class="mini-grid">
-        <a class="mini" href="https://github.com/Ashish1916/Aws-cost-intelligence-dashboard" target="_blank" rel="noopener">
-          <b>AWS Cost Intelligence Dashboard</b><span class="m">500K rows · $16.6K saved</span></a>
-        <a class="mini" href="https://github.com/Ashish1916/student-performance-ml-pipeline" target="_blank" rel="noopener">
-          <b>Student Performance ML Pipeline</b><span class="m">AUC 0.91 · MLflow</span></a>
-        <a class="mini" href="https://github.com/Ashish1916/sales-performance-analytics" target="_blank" rel="noopener">
-          <b>Sales Performance Analytics</b><span class="m">Star schema · 15+ DAX</span></a>
-        <a class="mini" href="https://github.com/Ashish1916/Bank-churn-risk-classifier" target="_blank" rel="noopener">
-          <b>Bank Churn Risk Classifier</b><span class="m">AUC 0.83</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="wrap reveal">
-    <div class="tag">About</div>
-    <div class="about-grid">
-      <img class="photo" src="ashish.jpeg" alt="Ashish Kosana">
-      <div>
-        <p>I'm a Computer Science graduate (UMass Lowell) and a <b>full-stack software engineer</b> — I like owning a feature end-to-end, from the Flutter screen a user taps to the AWS Lambda that answers it.</p>
-        <p>At <b>Crewtron</b> I build on a Flutter mobile app and an <b>AWS serverless backend</b> (Python, Lambda, DynamoDB, API Gateway, Cognito, CDK) — shipping features like geofenced clock-in/out with a live crew map, with the production habits that keep them honest: tests, code review, and CI.</p>
-        <p>I care about clean, simple, maintainable code and the small UX details that make a feature feel obvious. I'm looking for <b>Software Engineer / backend / full-stack</b> roles. Microsoft-certified in Azure DBA (DP-300) and Fabric Data Engineering (DP-700).</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <div class="reveal"><div class="tag">Skills</div><h2 class="h2">What I work with</h2></div>
-    <div class="skills-grid reveal">
-      <div class="sk-cat"><div class="skl">Languages</div><div class="sk-list"><span class="sk core">Python</span><span class="sk core">Dart</span><span class="sk core">SQL</span><span class="sk">Bash</span><span class="sk">Go (learning)</span></div></div>
-      <div class="sk-cat"><div class="skl">Mobile</div><div class="sk-list"><span class="sk core">Flutter</span><span class="sk core">Riverpod</span><span class="sk">Dio</span></div></div>
-      <div class="sk-cat"><div class="skl">Backend &amp; Cloud</div><div class="sk-list"><span class="sk core">AWS (Lambda, DynamoDB, API Gateway, Cognito, S3, CDK)</span><span class="sk core">FastAPI</span><span class="sk">REST APIs</span><span class="sk">JWT / OAuth2</span><span class="sk">Stripe</span><span class="sk">Postgres</span><span class="sk">Docker</span></div></div>
-      <div class="sk-cat"><div class="skl">Data</div><div class="sk-list"><span class="sk">dbt</span><span class="sk">DuckDB</span><span class="sk">star-schema modeling</span><span class="sk">Power BI</span></div></div>
-      <div class="sk-cat"><div class="skl">Practices</div><div class="sk-list"><span class="sk core">pytest / test-first</span><span class="sk core">CI/CD (GitHub Actions)</span><span class="sk">code review</span><span class="sk">git rebase workflow</span><span class="sk">observability</span></div></div>
-      <div class="sk-cat"><div class="skl">Also worked with</div><div class="sk-list"><span class="sk">Claude API</span><span class="sk">RAG</span><span class="sk">scikit-learn</span><span class="sk">MLflow</span></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <div class="reveal"><div class="tag">Experience</div><h2 class="h2">Where I've worked</h2></div>
-    <div class="reveal">
-      <div class="exp">
-        <div><div class="when">May 2026 — Present</div><div class="co">Crewtron</div></div>
-        <div>
-          <div class="role">Software Engineer Intern</div>
-          <div class="loc">Tempe, AZ</div>
-          <ul>
-            <li>Ship cross-platform <b>features in Flutter</b> on an <b>AWS serverless backend</b> (Python, Lambda, DynamoDB, API Gateway) — including geofenced clock-in/out with a live crew map.</li>
-            <li>Design <b>REST APIs with AWS Cognito</b> authentication; manage <b>AWS CDK</b> infrastructure and IAM policies; integrate the <b>Stripe API</b> for invoicing and payments.</li>
-            <li>Work in a disciplined engineering flow — unit/functional tests, multi-pass code review, and CI; drive quality and security review (OWASP Top 10).</li>
-          </ul>
-        </div>
-      </div>
-      <div class="exp">
-        <div><div class="when">Sep 2024 — Dec 2025</div><div class="co">Aramark (UMass Lowell)</div></div>
-        <div>
-          <div class="role">Data &amp; Operations Analyst</div>
-          <div class="loc">Lowell, MA</div>
-          <ul>
-            <li>Validated <b>500+ weekly records</b> with Python and SQL and automated data-entry workflows, reducing manual processing time.</li>
-            <li>Built and maintained <b>Power BI dashboards</b> with Git-managed datasets for frontline management.</li>
-            <li>Investigated data discrepancies and produced root-cause resolution reports for supervisors.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="education">
-  <div class="wrap">
-    <div class="reveal"><div class="tag">Education &amp; Certifications</div><h2 class="h2">Background</h2></div>
-    <div class="edu-grid reveal">
-      <div class="edu">
-        <div class="deg">B.S. in Computer Science</div>
-        <div class="sch">University of Massachusetts Lowell</div>
-        <div class="per">Graduated Dec 2025</div>
-        <div class="badges"><span class="badge gold">GPA 3.51</span><span class="badge gold">Dean's List</span><span class="badge">Transferred from B.Tech (SR Institute, India, 2021–24)</span></div>
-      </div>
-      <div class="edu">
-        <div class="deg">Microsoft Certifications</div>
-        <div class="sch">Azure &amp; Fabric</div>
-        <div class="per">2025</div>
-        <div class="badges"><span class="badge gold">DP-300 · Azure Database Administrator</span><span class="badge gold">DP-700 · Fabric Data Engineer</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap reveal">
-    <div class="tag">Get in touch</div>
-    <h2 class="h2">Let's build something</h2>
-    <p class="lead">I'm looking for full-time <b>Software Engineer / backend / full-stack</b> roles — authorized to work in the U.S. (F-1 OPT), open to H-1B sponsorship and nationwide relocation.</p>
-    <div class="channels">
-      <a class="primary" href="mailto:ashishkosana@gmail.com">✉ ashishkosana@gmail.com</a>
-      <a href="https://linkedin.com/in/ashishkosana" target="_blank" rel="noopener">in · LinkedIn ↗</a>
-      <a href="https://github.com/Ashish1916" target="_blank" rel="noopener">gh · GitHub ↗</a>
-      <a href="resume.pdf" target="_blank" rel="noopener">↓ Résumé</a>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="fl">Ashish Kosana</div>
-  <div class="fc">© 2026 · ashishkosana.com</div>
-</footer>
-
-<script>
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-const secs=[...document.querySelectorAll('section[id],header[id]')],links=[...document.querySelectorAll('.nav-links a')];
-addEventListener('scroll',()=>{let cur='';for(const s of secs){if(scrollY>=s.offsetTop-90)cur=s.id}links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur))},{passive:true});
-const menu=document.getElementById('menu'),nl=document.getElementById('navlinks');
-menu.addEventListener('click',()=>nl.classList.toggle('open'));
-nl.addEventListener('click',e=>{if(e.target.tagName==='A')nl.classList.remove('open')});
-</script>
+    /*===== SCROLL REVEAL ANIMATION =====*/
+    const sr = ScrollReveal({ origin: 'top', distance: '60px', duration: 2000, delay: 200 });
+    sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text', {});
+    sr.reveal('.home__img, .about__subtitle, .about__text', { delay: 400 });
+    sr.reveal('.home__social-icon', { interval: 200 });
+    sr.reveal('.skills__data, .experience__item, .contact__container', { interval: 200 });
+    function revealCards() { sr.reveal('.work__card', { interval: 150 }); }
+    </script>
 </body>
 </html>
