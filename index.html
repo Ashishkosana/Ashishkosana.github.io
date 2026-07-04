@@ -346,7 +346,7 @@
 
             <div class="home__social">
                 <a href="https://www.linkedin.com/in/ashishkosana/" target="_blank" rel="noreferrer" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
-                <a href="https://github.com/Ashish1916" target="_blank" rel="noreferrer" class="home__social-icon"><i class='bx bxl-github'></i></a>
+                <a href="https://github.com/Ashishkosana" target="_blank" rel="noreferrer" class="home__social-icon"><i class='bx bxl-github'></i></a>
                 <a href="mailto:ashishkosana@gmail.com" class="home__social-icon"><i class='bx bx-envelope'></i></a>
             </div>
 
@@ -466,7 +466,7 @@
             <div class="work__container bd-grid" id="work-grid">
                 <!-- Project cards render here from the GitHub API -->
             </div>
-            <p class="work__note">Live from <a href="https://github.com/Ashish1916" target="_blank" rel="noreferrer" style="color: var(--first-color); font-weight: 600;">my GitHub</a> — repos tagged <code>portfolio</code> appear here automatically.</p>
+            <p class="work__note">Live from <a href="https://github.com/Ashishkosana" target="_blank" rel="noreferrer" style="color: var(--first-color); font-weight: 600;">my GitHub</a> — repos tagged <code>portfolio</code> appear here automatically.</p>
         </section>
 
         <!--===== CONTACT =====-->
@@ -488,7 +488,7 @@
         <p class="footer__title">Ashish Kosana</p>
         <div class="footer__social">
             <a href="https://www.linkedin.com/in/ashishkosana/" target="_blank" rel="noreferrer" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
-            <a href="https://github.com/Ashish1916" target="_blank" rel="noreferrer" class="footer__icon"><i class='bx bxl-github'></i></a>
+            <a href="https://github.com/Ashishkosana" target="_blank" rel="noreferrer" class="footer__icon"><i class='bx bxl-github'></i></a>
             <a href="mailto:ashishkosana@gmail.com" class="footer__icon"><i class='bx bx-envelope'></i></a>
         </div>
         <p class="footer__copy">&#169; Ashish Kosana</p>
@@ -522,10 +522,10 @@
       JavaScript: 'bxl-javascript', HTML: 'bxl-html5', CSS: 'bxl-css3',
     };
     const FALLBACK = [
-      { name: 'career-copilot', description: 'Personal job-search agent — daily briefing (Gmail triage + scored job matches) on AWS serverless.', language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Ashish1916/career-copilot' },
-      { name: 'ai-clone', description: 'Chat-with-my-AI-clone site on AWS serverless (CDK, Lambda, DynamoDB, CloudFront).', language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Ashish1916/ai-clone' },
-      { name: 'linkvault', description: 'Save and organize links with tags and search.', language: 'TypeScript', stargazers_count: 0, html_url: 'https://github.com/Ashish1916/linkvault' },
-      { name: 'envlint', description: 'Lint .env files against an example schema.', language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Ashish1916/envlint' },
+      { name: 'career-copilot', description: 'Personal job-search agent — daily briefing (Gmail triage + scored job matches) on AWS serverless.', language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Ashishkosana/career-copilot' },
+      { name: 'ai-clone', description: 'Chat-with-my-AI-clone site on AWS serverless (CDK, Lambda, DynamoDB, CloudFront).', language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Ashishkosana/ai-clone' },
+      { name: 'linkvault', description: 'Save and organize links with tags and search.', language: 'TypeScript', stargazers_count: 0, html_url: 'https://github.com/Ashishkosana/linkvault' },
+      { name: 'envlint', description: 'Lint .env files against an example schema.', language: 'Python', stargazers_count: 0, html_url: 'https://github.com/Ashishkosana/envlint' },
     ];
 
     function renderProjects(repos) {
@@ -544,7 +544,7 @@
         </a>`).join('');
     }
 
-    fetch('https://api.github.com/users/Ashish1916/repos?per_page=100&sort=updated')
+    fetch('https://api.github.com/users/Ashishkosana/repos?per_page=100&sort=updated')
       .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(repos => {
         const tagged = repos.filter(r => (r.topics || []).includes('portfolio') && !r.fork);
