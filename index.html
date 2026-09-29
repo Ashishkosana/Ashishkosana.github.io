@@ -17,6 +17,18 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+    <!--
+      Ask Ashish API base. The widget POSTs JSON {"message":"..."} to {base}/chat.
+      No API key belongs in this page — the backend holds credentials and CORS.
+      Local default: http://localhost:8000
+      Production: set content to the Railway URL of the ask-ashish service (no path),
+      e.g. https://ask-ashish-production.up.railway.app
+      window.ASK_ASHISH_API, if set to a non-empty string, overrides this meta tag.
+      Expected 200 JSON: {"answer":"...","citations":[{"label":"Skills","url":"https://..."}],"abstained":false}
+      "sources" or "contexts" are also read as citations. abstained:true is shown politely.
+    -->
+    <meta name="ask-ashish-api" content="http://localhost:8000">
+
     <!-- =====BOX ICONS===== -->
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -316,6 +328,189 @@
       .home { padding: 10rem 0 2rem; }
       .home__img { width: 450px; }
     }
+
+    /* ===== ASK ASHISH (appended widget; does not restyle existing sections) ===== */
+    .ask__fab {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 90; /* above page content; header stays at --z-fixed (100) */
+      width: 3.4rem;
+      height: 3.4rem;
+      border: 0;
+      border-radius: 50%;
+      background-color: var(--first-color);
+      color: #fff;
+      box-shadow: 0px 4px 25px rgba(14, 36, 49, .15);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 1.55rem;
+      font-family: var(--body-font);
+      transition: box-shadow .3s;
+    }
+    .ask__fab:hover { box-shadow: 0px 10px 36px rgba(0, 0, 0, .15); }
+    .ask__panel {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 5.4rem;
+      z-index: 90;
+      width: 22.5rem;
+      height: min(32rem, calc(100vh - 8.5rem));
+      height: min(32rem, calc(100dvh - 8.5rem));
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      color: var(--second-color);
+      font-family: var(--body-font);
+      border-radius: .5rem;
+      box-shadow: 0px 4px 25px rgba(14, 36, 49, .15);
+      overflow: hidden;
+    }
+    .ask__panel[hidden] { display: none; }
+    .ask__header {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      padding: .9rem 1rem .8rem;
+      border-bottom: 1px solid hsl(var(--hue-color), 30%, 92%);
+      border-left: 4px solid var(--first-color);
+    }
+    .ask__heading { min-width: 0; }
+    .ask__title {
+      font-size: 1.05rem;
+      font-weight: var(--font-semi);
+      color: var(--second-color);
+    }
+    .ask__subtitle {
+      margin-top: .15rem;
+      font-size: var(--smaller-font-size);
+      color: hsl(var(--hue-color), 12%, 45%);
+      line-height: 1.4;
+    }
+    .ask__close {
+      margin-left: auto;
+      flex: none;
+      width: 2.25rem;
+      height: 2.25rem;
+      border: 0;
+      border-radius: .5rem;
+      background: transparent;
+      color: var(--second-color);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 1.45rem;
+      font-family: var(--body-font);
+    }
+    .ask__close:hover { color: var(--first-color); }
+    .ask__log {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+    }
+    .ask__empty {
+      margin: auto 0;
+      text-align: center;
+      font-size: var(--smaller-font-size);
+      color: hsl(var(--hue-color), 12%, 45%);
+      line-height: 1.5;
+    }
+    .ask__msg { max-width: 100%; }
+    .ask__msg-text {
+      font-size: var(--smaller-font-size);
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+    .ask__msg--user { align-self: flex-end; max-width: 85%; }
+    .ask__msg--user .ask__msg-text {
+      background-color: var(--first-color-lighter);
+      color: var(--first-color-dark);
+      border-radius: .5rem;
+      padding: .55rem .8rem;
+    }
+    .ask__msg--assistant .ask__msg-text { color: var(--second-color); }
+    .ask__msg--pending .ask__msg-text,
+    .ask__msg--error .ask__msg-text,
+    .ask__msg--abstain .ask__msg-text { color: hsl(var(--hue-color), 12%, 32%); }
+    .ask__cites { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
+    .ask__cites .skills__tag { text-decoration: none; }
+    .ask__form {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1rem 0;
+    }
+    .ask__sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .ask__input {
+      flex: 1 1 auto;
+      min-width: 0;
+      border: 2px solid var(--first-color);
+      border-radius: .5rem;
+      background: #fff;
+      color: var(--second-color);
+      font-family: var(--body-font);
+      font-size: var(--smaller-font-size);
+      padding: .55rem .75rem;
+    }
+    .ask__input::placeholder { color: hsl(var(--hue-color), 12%, 55%); }
+    .ask__send {
+      flex: none;
+      width: 2.6rem;
+      height: 2.6rem;
+      border: 0;
+      border-radius: .5rem;
+      background-color: var(--first-color);
+      color: #fff;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      font-family: var(--body-font);
+      transition: box-shadow .3s;
+    }
+    .ask__send:hover { box-shadow: 0px 10px 36px rgba(0, 0, 0, .15); }
+    .ask__send:disabled { opacity: .55; cursor: default; box-shadow: none; }
+    .ask__disclaimer {
+      padding: .4rem 1rem .8rem;
+      font-size: var(--smaller-font-size);
+      line-height: 1.4;
+      color: hsl(var(--hue-color), 12%, 45%);
+    }
+    .ask__fab:focus-visible,
+    .ask__close:focus-visible,
+    .ask__send:focus-visible,
+    .ask__input:focus-visible,
+    .ask__cites a:focus-visible {
+      outline: 2px solid var(--first-color);
+      outline-offset: 2px;
+    }
+    @media screen and (max-width: 576px) {
+      .ask__fab { right: 1rem; bottom: 1rem; }
+      .ask__panel {
+        left: .75rem;
+        right: .75rem;
+        width: auto;
+        bottom: 5rem;
+        height: min(32rem, calc(100vh - 7.5rem));
+        height: min(32rem, calc(100dvh - 7.5rem));
+      }
+    }
     </style>
 </head>
 <body>
@@ -598,6 +793,275 @@
     sr.reveal('.home__social-icon', { interval: 200 });
     sr.reveal('.skills__data, .os__box, .experience__item, .contact__container', { interval: 200 });
     function revealCards() { sr.reveal('.work__card', { interval: 150 }); }
+    </script>
+
+    <!--===== ASK ASHISH =====-->
+    <button type="button" class="ask__fab" id="ask-fab" aria-label="Ask Ashish" aria-haspopup="dialog" aria-expanded="false" aria-controls="ask-panel">
+        <i class='bx bx-message-rounded-dots' aria-hidden="true"></i>
+    </button>
+    <div class="ask__panel" id="ask-panel" role="dialog" aria-modal="true" aria-labelledby="ask-title" aria-describedby="ask-subtitle" aria-hidden="true" hidden>
+        <div class="ask__header">
+            <div class="ask__heading">
+                <h2 class="ask__title" id="ask-title">Ask Ashish</h2>
+                <p class="ask__subtitle" id="ask-subtitle">Answers from my published materials.</p>
+            </div>
+            <button type="button" class="ask__close" id="ask-close" aria-label="Close chat">
+                <i class='bx bx-x' aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="ask__log" id="ask-log" role="log" aria-live="polite" aria-relevant="additions">
+            <p class="ask__empty">Ask about projects, skills, or experience.</p>
+        </div>
+        <form class="ask__form" id="ask-form">
+            <label class="ask__sr" for="ask-input">Ask a question</label>
+            <input class="ask__input" id="ask-input" type="text" name="message" placeholder="Ask a question..." maxlength="2000" autocomplete="off" aria-describedby="ask-disclaimer" required>
+            <button type="submit" class="ask__send" id="ask-send" aria-label="Send question">
+                <i class='bx bx-send' aria-hidden="true"></i>
+            </button>
+        </form>
+        <p class="ask__disclaimer" id="ask-disclaimer">Answers come from published materials only and may be incomplete.</p>
+    </div>
+    <script>
+    /* Ask Ashish — POST {message} to {ASK_ASHISH_API||meta}/chat. No API key in the browser. */
+    (function () {
+      var fab = document.getElementById('ask-fab');
+      var panel = document.getElementById('ask-panel');
+      var form = document.getElementById('ask-form');
+      var input = document.getElementById('ask-input');
+      var log = document.getElementById('ask-log');
+      var sendBtn = document.getElementById('ask-send');
+      var pending = false;
+      var ABSTAIN = "I don't have that in my published materials, so I won't guess. Try asking about a project, skill, or role listed on this site.";
+
+      function apiBase() {
+        var fromWindow = (typeof window.ASK_ASHISH_API === 'string' && window.ASK_ASHISH_API.trim()) || '';
+        var meta = document.querySelector('meta[name="ask-ashish-api"]');
+        var fromMeta = meta ? (meta.getAttribute('content') || '').trim() : '';
+        return (fromWindow || fromMeta || 'http://localhost:8000').replace(/\/+$/, '');
+      }
+
+      function isOpen() { return !panel.hasAttribute('hidden'); }
+
+      function focusables() {
+        return Array.prototype.filter.call(
+          panel.querySelectorAll('a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])'),
+          function (el) { return !el.disabled && !el.closest('[hidden]'); }
+        );
+      }
+
+      function openPanel() {
+        panel.removeAttribute('hidden');
+        panel.setAttribute('aria-hidden', 'false');
+        fab.setAttribute('aria-expanded', 'true');
+        window.setTimeout(function () { input.focus(); }, 0);
+      }
+
+      function closePanel() {
+        panel.setAttribute('hidden', '');
+        panel.setAttribute('aria-hidden', 'true');
+        fab.setAttribute('aria-expanded', 'false');
+        fab.focus();
+      }
+
+      fab.addEventListener('click', function () { isOpen() ? closePanel() : openPanel(); });
+      document.getElementById('ask-close').addEventListener('click', closePanel);
+
+      document.addEventListener('keydown', function (e) {
+        if (!isOpen()) return;
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          closePanel();
+          return;
+        }
+        if (e.key !== 'Tab') return;
+        var items = focusables();
+        if (!items.length) return;
+        var first = items[0];
+        var last = items[items.length - 1];
+        var active = document.activeElement;
+        if (!panel.contains(active)) {
+          e.preventDefault();
+          (e.shiftKey ? last : first).focus();
+        } else if (e.shiftKey && active === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && active === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      });
+
+      function scrollLog() { log.scrollTop = log.scrollHeight; }
+
+      function addMessage(role, text, extra) {
+        var empty = log.querySelector('.ask__empty');
+        if (empty) empty.remove();
+        var item = document.createElement('div');
+        item.className = 'ask__msg ask__msg--' + role;
+        var body = document.createElement('p');
+        body.className = 'ask__msg-text';
+        body.textContent = text;
+        item.appendChild(body);
+        if (extra) item.appendChild(extra);
+        log.appendChild(item);
+        scrollLog();
+        return item;
+      }
+
+      function safeUrl(url) {
+        if (!url || typeof url !== 'string') return null;
+        var trimmed = url.trim();
+        if (trimmed.charAt(0) === '#' && trimmed.indexOf('\n') === -1 && trimmed.toLowerCase().indexOf('javascript') === -1) {
+          return trimmed;
+        }
+        try {
+          var parsed = new URL(trimmed, window.location.href);
+          if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return parsed.href;
+        } catch (err) { /* drop unsafe urls */ }
+        return null;
+      }
+
+      function chipLabel(raw) {
+        var label = String(raw || '').trim();
+        if (!label) return 'Source';
+        var base = label.split(/[/\\]/).pop().replace(/\.(md|markdown|txt|pdf|html)$/i, '');
+        base = base.replace(/[-_]+/g, ' ').trim();
+        if (base.length > 48) base = base.slice(0, 45).trim() + '…';
+        return base || 'Source';
+      }
+
+      function citationsOf(data) {
+        var raw = (data && (data.citations || data.sources || data.contexts)) || [];
+        if (!Array.isArray(raw)) return [];
+        var seen = {};
+        var out = [];
+        raw.forEach(function (item) {
+          var label, url = null;
+          if (typeof item === 'string') label = chipLabel(item);
+          else if (item && typeof item === 'object') {
+            label = chipLabel(item.label || item.title || item.name || item.source || item.section || 'Source');
+            url = item.url || item.href || item.link || null;
+          } else return;
+          var key = label.toLowerCase() + '|' + (url || '');
+          if (seen[key]) return;
+          seen[key] = true;
+          out.push({ label: label, url: url });
+        });
+        return out.slice(0, 8);
+      }
+
+      function citeRow(cites) {
+        if (!cites.length) return null;
+        var row = document.createElement('div');
+        row.className = 'ask__cites';
+        cites.forEach(function (cite) {
+          var href = safeUrl(cite.url);
+          var el = document.createElement(href ? 'a' : 'span');
+          el.className = 'skills__tag';
+          el.textContent = cite.label;
+          if (href) {
+            el.href = href;
+            if (href.charAt(0) !== '#') {
+              el.target = '_blank';
+              el.rel = 'noreferrer';
+            } else {
+              el.addEventListener('click', function (e) {
+                var target = document.getElementById(href.slice(1));
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              });
+            }
+          }
+          row.appendChild(el);
+        });
+        return row;
+      }
+
+      function answerOf(data) {
+        if (!data) return '';
+        if (typeof data === 'string') return data.trim();
+        var text = data.answer || data.reply || data.text || '';
+        return typeof text === 'string' ? text.trim() : '';
+      }
+
+      function isAbstain(data) {
+        if (!data || typeof data !== 'object') return false;
+        if (data.abstained === true || data.abstain === true || data.refused === true) return true;
+        var status = typeof data.status === 'string' ? data.status.toLowerCase() : '';
+        return status === 'abstain' || status === 'abstained' || status === 'refused';
+      }
+
+      function errorText(data) {
+        var fallback = 'Something went wrong. Please try again in a moment.';
+        if (!data || typeof data !== 'object') return fallback;
+        var raw = data.error || data.detail || data.message;
+        if (Array.isArray(raw)) {
+          raw = raw.map(function (item) {
+            if (typeof item === 'string') return item;
+            return (item && item.msg) || '';
+          }).filter(Boolean).join(' ');
+        }
+        if (typeof raw !== 'string') return fallback;
+        var text = raw.trim();
+        if (!text || text.length > 240 || /traceback|exception|stack/i.test(text)) return fallback;
+        return text;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (pending) return;
+        var message = input.value.trim();
+        if (!message) return;
+        input.value = '';
+        addMessage('user', message);
+        var placeholder = addMessage('pending', 'Looking through published materials…');
+        pending = true;
+        sendBtn.disabled = true;
+        log.setAttribute('aria-busy', 'true');
+
+        fetch(apiBase() + '/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ message: message })
+        }).then(function (res) {
+          return res.text().then(function (raw) {
+            var data = null;
+            if (raw) {
+              try { data = JSON.parse(raw); }
+              catch (err) { data = { answer: raw }; }
+            }
+            if (!res.ok && !isAbstain(data)) {
+              var err = new Error(errorText(data && typeof data === 'object' ? data : null));
+              err.friendly = true;
+              throw err;
+            }
+            return data;
+          });
+        }).then(function (data) {
+          placeholder.remove();
+          var cites = citeRow(citationsOf(data));
+          if (isAbstain(data)) {
+            addMessage('abstain', answerOf(data) || ABSTAIN, cites);
+            return;
+          }
+          var answer = answerOf(data);
+          if (!answer) {
+            addMessage('error', "I didn't get an answer back. Please try again in a moment.");
+            return;
+          }
+          addMessage('assistant', answer, cites);
+        }).catch(function (err) {
+          placeholder.remove();
+          addMessage('error', (err && err.friendly && err.message) ? err.message : "I couldn't reach the assistant just now. Please try again in a moment.");
+        }).then(function () {
+          pending = false;
+          sendBtn.disabled = false;
+          log.removeAttribute('aria-busy');
+          if (isOpen()) input.focus();
+        });
+      });
+    })();
     </script>
 </body>
 </html>
