@@ -273,6 +273,12 @@
     .work__meta a:hover { color: var(--first-color-dark); }
     .work__meta i { vertical-align: -2px; }
     .work__note { text-align: center; font-size: var(--smaller-font-size); color: hsl(var(--hue-color), 12%, 45%); margin-top: var(--mb-4); }
+    .work__note + .work__note { margin-top: .75rem; }
+    .work__note a,
+    .work__note button { color: var(--first-color); font-weight: var(--font-semi); }
+    .work__note button { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+    .work__note a:hover,
+    .work__note button:hover { color: var(--first-color-dark); }
 
     /* ===== CONTACT =====*/
     .contact__container { justify-items: center; row-gap: 1.5rem; text-align: center; }
@@ -543,7 +549,7 @@
         <section class="home bd-grid" id="home">
             <div class="home__data">
                 <h1 class="home__title">Hi,<br>I'm <span class="home__title-color">Ashish</span><br>Software Engineer</h1>
-                <p class="home__tagline"><strong>Backend &amp; Distributed Systems · Applied AI.</strong> I build systems that stay correct under retries, crashes, and races — and I ship LLM features with evaluation harnesses that prove they work. Python · AWS · Postgres.</p>
+                <p class="home__tagline"><strong>Backend &amp; Distributed Systems · Applied AI.</strong> I build systems that stay correct under retries, crashes, and races — and I ship LLM features with evaluation harnesses that prove they work. Python · AWS · Postgres. Open to new-grad roles on F-1 OPT (STEM).</p>
                 <div class="home__buttons">
                     <a href="https://main.d3jtg3gae71asa.amplifyapp.com" target="_blank" rel="noreferrer" class="button">🌾 Rythu — live demo</a>
                     <a href="#work" class="button button--ghost">View work</a>
@@ -581,7 +587,7 @@
 
                 <div>
                     <h2 class="about__subtitle">I'm Ashish Kosana</h2>
-                    <p class="about__text">Backend engineer who ships LLM-powered features and can prove they work. At Crewtron I build on a production AWS serverless platform (Lambda, DynamoDB, API Gateway, Cognito, CDK) and wired CloudWatch monitoring into Slack so errors surface with the affected users. On my own I build reliable systems — <strong>ledgerline</strong> (exactly-once payments), <strong>tick</strong> (a durable Postgres scheduler), and <strong>review-lens</strong> (a self-verifying LLM reviewer with an evaluation harness). First engineer in my family; I daily-drive Ubuntu on a UTM VM and care about how the system works underneath. Recent CS grad, UMass Lowell (Dec 2025), based in Tempe, AZ. Open to new-grad SWE roles.</p>
+                    <p class="about__text"><strong>Backend &amp; Distributed Systems · Applied AI.</strong> I ship LLM-powered features and can prove they work. At Crewtron I build on a production AWS serverless platform (Lambda, DynamoDB, API Gateway, Cognito, CDK) and wired CloudWatch monitoring into Slack so errors surface with the affected users. On my own I build reliable systems — <strong>ledgerline</strong> (exactly-once payments), <strong>tick</strong> (a durable Postgres scheduler), and <strong>review-lens</strong> (a self-verifying LLM reviewer with an evaluation harness). First engineer in my family; I daily-drive Ubuntu on a UTM VM and care about how the system works underneath. Recent CS grad, UMass Lowell (Dec 2025), based in Tempe, AZ. Open to new-grad SWE roles — authorized to work in the U.S. on F-1 OPT (STEM, ~3 years, no sponsorship needed to start).</p>
                 </div>
             </div>
         </section>
@@ -674,7 +680,8 @@
             <div class="work__container bd-grid" id="work-grid">
                 <!-- Project cards render here -->
             </div>
-            <p class="work__note">More on <a href="https://github.com/Ashishkosana" target="_blank" rel="noreferrer" style="color: var(--first-color); font-weight: 600;">my GitHub</a> — 25+ public repos.</p>
+            <p class="work__note">Also <a href="https://github.com/Ashishkosana/jobs-mcp" target="_blank" rel="noreferrer">jobs-mcp</a> — an MCP server that gives any LLM live access to US software-engineering openings. More on <a href="https://github.com/Ashishkosana" target="_blank" rel="noreferrer">my GitHub</a> — 25+ public repos.</p>
+            <p class="work__note">Live: <button type="button" id="open-ask-ashish" aria-controls="ask-panel">Ask Ashish</button> · <a href="https://jobs.ashishkosana.com" target="_blank" rel="noreferrer">jobs.ashishkosana.com</a></p>
         </section>
 
         <!--===== CONTACT =====-->
@@ -682,7 +689,7 @@
             <h2 class="section-title">Contact</h2>
 
             <div class="contact__container bd-grid">
-                <p class="contact__text">Open to new-grad <strong>Backend / Full-Stack / Applied-AI Software Engineer</strong> roles (authorized to work in the U.S. on F-1 OPT — STEM, ~3 years, no sponsorship needed to start). The fastest ways to reach me:</p>
+                <p class="contact__text">Open to new-grad <strong>Backend &amp; Distributed Systems · Applied AI</strong> roles (authorized to work in the U.S. on F-1 OPT — STEM, ~3 years, no sponsorship needed to start). The fastest ways to reach me:</p>
                 <div class="contact__links">
                     <a href="mailto:ashishkosana@gmail.com" class="button">Email me</a>
                     <a href="https://www.linkedin.com/in/ashishkosana/" target="_blank" rel="noreferrer" class="button button--ghost">LinkedIn</a>
@@ -746,14 +753,18 @@
         description: 'Durable job & cron scheduler on Postgres — many workers, one job each, and a crashed worker gets its job reclaimed. Retries with backoff, dead-letter state, recurring schedules.',
         metric: 'SELECT … FOR UPDATE SKIP LOCKED · 500 jobs / 10 workers · zero collisions · 14 tests',
         source: 'https://github.com/Ashishkosana/tick' },
+      { name: 'agent-hands', language: 'Python', stack: 'Python · Playwright',
+        description: 'Record-once / replay-many computer-use automation: an LLM discovers a UI flow once; a typed capability artifact replays it deterministically with no model in the loop.',
+        metric: 'research prototype · no model on replay',
+        source: 'https://github.com/Ashishkosana/agent-hands' },
+      { name: 'autonomous-agent', language: 'TypeScript', stack: 'TypeScript · SQLite · Linux sandbox',
+        description: 'Memory-augmented autonomous agent with deterministic evaluation and observability: one high-level goal, plans and acts in an isolated Linux sandbox, checks the result against mechanical criteria, and can retrieve those records on a later run.',
+        metric: 'retrieves prior-run records · does not train weights',
+        source: 'https://github.com/Ashishkosana/autonomous-agent' },
       { name: 'review-lens', language: 'Python', stack: 'Python · LLM · GitHub Action',
         description: 'Self-verifying LLM code reviewer — runs independent lenses (correctness, security, performance, tests), then adversarially checks its own findings to cut false positives.',
         metric: 'evaluation harness · precision/recall/F1 · 81 tests · mypy --strict',
         source: 'https://github.com/Ashishkosana/review-lens' },
-      { name: 'jobs-mcp', language: 'Python', stack: 'Python · Model Context Protocol',
-        description: 'Authored a Model Context Protocol (MCP) server that exposes live US software-engineering jobs as tools any AI client can discover and call — pulling from company ATS boards, no API keys.',
-        metric: 'MCP tools over stdio · concurrent ATS fetch · per-source failure isolation · MIT',
-        source: 'https://github.com/Ashishkosana/jobs-mcp' },
       { name: 'Rythu', language: 'TypeScript', stack: 'Next.js · TypeScript · Python · AWS Lambda · DynamoDB · CDK',
         description: 'Telugu-first farmer advisory app — deployed, with real users including my father. Weather, crop advice, and market prices, server-rendered over a Python/AWS serverless backend.',
         metric: 'deployed · real users · DynamoDB TTL cache · ~135 tests · CI green',
@@ -1062,6 +1073,13 @@
         });
       });
     })();
+    </script>
+    <script>
+    /* Open the existing Ask Ashish panel from the Work note. Does not change the widget. */
+    document.getElementById('open-ask-ashish').addEventListener('click', function () {
+      var fab = document.getElementById('ask-fab');
+      if (fab && fab.getAttribute('aria-expanded') !== 'true') fab.click();
+    });
     </script>
 </body>
 </html>
